@@ -1,9 +1,6 @@
 # 环境变量和密钥
 .env
 
-# 去重缓存（每台机器各自维护，由 Actions 通过 cache 管理）
-data/
-
 # Python
 __pycache__/
 *.py[cod]
@@ -15,3 +12,7 @@ preview.html
 
 # macOS
 .DS_Store
+
+# IDE
+.vscode/
+.idea/
