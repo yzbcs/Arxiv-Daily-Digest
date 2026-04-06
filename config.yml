@@ -26,7 +26,7 @@ max_papers: 10
 # LLM 相关性评分门槛（1-10）
 # 低于此分的论文不推送，即使凑不满 max_papers 也不推
 # 建议范围：6（默认，平衡） / 7-8（严格） / 4-5（宽松）
-min_score: 6
+min_score: 5
 
 # arxiv 初始搜索数量，由 LLM 从中筛选出 max_papers 篇
 # 建议 candidate_pool >= max_papers * 3
@@ -39,3 +39,12 @@ smtp_provider: "163"
 # LLM 服务商，可选：minimax / claude / openai / deepseek / zhipu / moonshot / qwen
 # 对应 API Key 填写到 GitHub Secrets 的 LLM_API_KEY
 llm_provider: minimax
+
+# ── 小红书配置 ───────────────────────────────────────────────
+# 留空则复用上方 keywords；如需单独配置小红书搜索词，在此填写
+# XHS_COOKIE 填写到 GitHub Secrets（不填则跳过小红书抓取，仅发 arXiv）
+# 示例：xhs_keywords: [AI工具, 产品评测, 开源项目]
+xhs_keywords: []
+
+# 小红书初始搜索候选数量（每个关键词均分）
+xhs_candidate_pool: 30

@@ -6,8 +6,9 @@ main.py — arxiv-daily 主入口
 2. 计算本次对应的 arXiv 公告日 + 论文提交窗口
 3. 抓取 arxiv 候选论文（按提交窗口）
 4. LLM 筛选论文 + 生成中文摘要和详细解读
-5. 渲染 HTML 邮件
-6. SMTP 发送
+5. [可选] 抓取小红书候选笔记，LLM 筛选 + 生成一句话总结
+6. 渲染两列 HTML 邮件
+7. SMTP 发送
 
 用法：
   正常运行：  python3 main.py
@@ -26,11 +27,14 @@ import pytz
 from fetchers.arxiv_fetcher import fetch_papers
 from fetchers.arxiv_schedule import (
     ET,
+    _is_valid_announcement_day,
     get_effective_announcement_date,
     get_submission_window,
     normalize_requested_announcement_date,
 )
+from fetchers.xhs_fetcher import fetch_xhs_notes
 from llm.filter_and_summarize import filter_and_summarize_papers
+from llm.filter_and_summarize_xhs import filter_and_summarize_xhs
 from render.email_renderer import render_email
 from sender.smtp_sender import send_email
 
@@ -58,47 +62,91 @@ def main(dry_run: bool = False, target_date: date | None = None):
     min_score      = cfg.get("min_score", 6)
     smtp_provider  = cfg.get("smtp_provider", "163")
     llm_provider   = cfg.get("llm_provider", "claude")
+    xhs_keywords   = cfg.get("xhs_keywords") or keywords
+    xhs_pool       = cfg.get("xhs_candidate_pool", 30)
 
     llm_api_key = get_env("LLM_API_KEY")
     email_user  = get_env("EMAIL_USER", required=not dry_run)
     email_pass  = get_env("EMAIL_PASS", required=not dry_run)
     email_to    = get_env("EMAIL_TO",   required=not dry_run)
+    xhs_cookie  = get_env("XHS_COOKIE", required=False)
 
-    # Step 1: 抓取 arxiv 候选（按 arXiv 公告批次对应的提交窗口）
-    print(f"[1/4] 搜索 arxiv 论文，关键词: {keywords}")
+    # Step 1: 判断今天是否有 arXiv 公告，并抓取候选
+    arxiv_rest = False
+    papers = []
+    candidates = []
 
-    # 计算公告日和对应提交窗口
     if target_date:
-        ann_date = normalize_requested_announcement_date(target_date)
+        # 手动指定日期：如果该日期不是有效公告日，标记为休息日
+        if _is_valid_announcement_day(target_date):
+            ann_date = target_date
+        else:
+            arxiv_rest = True
+            ann_date = None
     else:
         now_et = datetime.now(ET)
-        ann_date = get_effective_announcement_date(now_et)
-    start_time, end_time = get_submission_window(ann_date)
+        today_et = now_et.date()
+        ann_date = None
+        # 判断今天是否为 arXiv 公告日（周末/节假日无公告）
+        if not _is_valid_announcement_day(today_et) and now_et.hour < 20:
+            arxiv_rest = True
 
-    weekday_names = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-    print(f"      公告日(ET): {ann_date.strftime('%m-%d')} {weekday_names[ann_date.weekday()]}")
-    print(f"      提交窗口(ET): {start_time.astimezone(ET).strftime('%m-%d %H:%M')} ~ "
-          f"{end_time.astimezone(ET).strftime('%m-%d %H:%M')}")
-
-    candidates = fetch_papers(keywords, categories, candidate_pool,
-                              start_time=start_time, end_time=end_time)
-    print(f"      候选论文: {len(candidates)} 篇")
+    if not arxiv_rest:
+        if ann_date is None:
+            ann_date = get_effective_announcement_date(now_et)
+        start_time, end_time = get_submission_window(ann_date)
+        weekday_names = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+        print(f"[1/5] 搜索 arxiv 论文，关键词: {keywords}")
+        print(f"      公告日(ET): {ann_date.strftime('%m-%d')} {weekday_names[ann_date.weekday()]}")
+        print(f"      提交窗口(ET): {start_time.astimezone(ET).strftime('%m-%d %H:%M')} ~ "
+              f"{end_time.astimezone(ET).strftime('%m-%d %H:%M')}")
+        candidates = fetch_papers(keywords, categories, candidate_pool,
+                                  start_time=start_time, end_time=end_time)
+        print(f"      候选论文: {len(candidates)} 篇")
+    else:
+        print(f"[1/5] arXiv 今日无公告（休息日），跳过论文抓取")
 
     # Step 2: LLM 筛选 + 生成摘要和详细解读
-    print(f"[2/4] LLM 筛选论文（provider: {llm_provider}）")
-    if dry_run and llm_api_key in ("dummy", "", "test"):
-        papers = candidates[:max_papers]
-        for p in papers:
-            p["summary_zh"] = "（dry-run 模式，未调用 LLM）"
-            p["detail_zh"]  = "论文做了什么：提出了一种新的方法解决当前问题。\n核心创新点：引入了全新的模型架构。\n主要结论：在多个基准上超越了现有方法。"
-        print(f"      [DRY-RUN] 跳过 LLM，直接取前 {len(papers)} 篇")
+    if candidates:
+        print(f"[2/5] LLM 筛选论文（provider: {llm_provider}）")
+        if dry_run and llm_api_key in ("dummy", "", "test"):
+            papers = candidates[:max_papers]
+            for p in papers:
+                p["summary_zh"] = "（dry-run 模式，未调用 LLM）"
+                p["detail_zh"]  = "论文做了什么：提出了一种新的方法解决当前问题。\n核心创新点：引入了全新的模型架构。\n主要结论：在多个基准上超越了现有方法。"
+            print(f"      [DRY-RUN] 跳过 LLM，直接取前 {len(papers)} 篇")
+        else:
+            papers = filter_and_summarize_papers(candidates, keywords, max_papers, llm_provider, llm_api_key, min_score=min_score)
+            print(f"      精选论文: {len(papers)} 篇")
     else:
-        papers = filter_and_summarize_papers(candidates, keywords, max_papers, llm_provider, llm_api_key, min_score=min_score)
-        print(f"      精选论文: {len(papers)} 篇")
+        print(f"[2/5] 无候选论文，跳过 LLM 筛选")
 
-    # Step 3: 渲染 HTML
-    print(f"[3/4] 渲染 HTML 邮件")
-    html = render_email(papers, keywords)
+    # Step 3: 小红书抓取 + 筛选
+    # 回跑模式（--date）跳过小红书，因为搜索 API 无法按历史日期筛选
+    print(f"[3/5] 抓取小红书笔记")
+    xhs_notes = []
+    if target_date:
+        print(f"      [SKIP] 回跑模式，小红书无法按历史日期筛选，跳过")
+    elif xhs_cookie:
+        xhs_candidates = fetch_xhs_notes(xhs_keywords, xhs_pool, xhs_cookie)
+        print(f"      候选笔记: {len(xhs_candidates)} 条")
+        if xhs_candidates:
+            if dry_run and llm_api_key in ("dummy", "", "test"):
+                xhs_notes = xhs_candidates[:max_papers]
+                for n in xhs_notes:
+                    n["summary_zh"] = "（dry-run 模式，未调用 LLM）"
+                    n["score"] = 0
+                print(f"      [DRY-RUN] 跳过 LLM，直接取前 {len(xhs_notes)} 条")
+            else:
+                xhs_notes = filter_and_summarize_xhs(xhs_candidates, xhs_keywords, max_papers, llm_provider, llm_api_key, min_score=min_score)
+                print(f"      精选笔记: {len(xhs_notes)} 条")
+    else:
+        print(f"      [SKIP] XHS_COOKIE 未设置，跳过小红书抓取")
+
+    # Step 4: 渲染 HTML
+    print(f"[4/5] 渲染 HTML 邮件")
+    html = render_email(papers, keywords, xhs_notes=xhs_notes, arxiv_rest=arxiv_rest,
+                        display_date=target_date)
 
     if dry_run:
         out_path = "preview.html"
@@ -107,10 +155,10 @@ def main(dry_run: bool = False, target_date: date | None = None):
         print(f"[DRY-RUN] 预览已保存至 {out_path}，未发送邮件")
         return
 
-    # Step 4: 发送邮件
-    print(f"[4/4] 发送邮件至 {email_to}")
+    # Step 5: 发送邮件
+    print(f"[5/5] 发送邮件至 {email_to}")
     send_email(html, email_user, email_pass, email_to, smtp_provider)
-    print(f"[DONE] 推送完成，共 {len(papers)} 篇")
+    print(f"[DONE] 推送完成，共 {len(papers)} 篇论文 + {len(xhs_notes)} 条笔记")
 
 
 if __name__ == "__main__":

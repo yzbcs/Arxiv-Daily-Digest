@@ -16,3 +16,6 @@ preview.html
 # IDE
 .vscode/
 .idea/
+
+# Node.js 依赖（小红书签名用）
+node_modules/

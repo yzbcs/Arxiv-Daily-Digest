@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <b>每个工作日中午 12 点，把最新 arXiv 论文精选自动推进你的邮箱。</b><br/>
+  <b>每天中午 12 点，把最新 arXiv 论文和小红书笔记精选推进你的邮箱。</b><br/>
   LLM 智能筛选 + 中文摘要 + 详细解读，fork 即用，无需服务器。
 </p>
 
@@ -16,11 +16,10 @@
 
 ## 📸 效果预览
 
-邮件以卡片形式展示每篇论文，包含一句话总结和可展开的详细解读：
+邮件支持 **Tab 切换**，点击「arXiv 论文」或「小红书笔记」独立浏览：
 
-- **一句话总结**：快速判断是否值得细读
-- **详细解读**：点击展开，查看论文做了什么、核心创新点、主要结论
-- **直达链接**：arXiv 原文 + PDF 一键跳转
+- **arXiv 论文**：一句话总结 + 详细解读 + PDF 链接；休息日显示"今天我们休息～"
+- **小红书笔记**：内容总结 + 跳转链接；每天更新（不受 arXiv 休息日影响）
 
 ---
 
@@ -29,7 +28,8 @@
 - 🔍 **精准时间对齐**：按 arXiv 官方公告批次抓取，不漏批、不重复
 - 🤖 **LLM 智能筛选**：自动从候选中精选最相关的 Top 10，低相关论文过滤不推
 - 🈶 **中文双层摘要**：一句话总结 + 100-150 字详细解读，阅读效率翻倍
-- 📬 **HTML 邮件推送**：精美卡片排版，支持展开/收起详情
+- 📬 **HTML 邮件推送**：精美卡片排版，**Tab 切换**展示 arXiv / 小红书
+- 📕 **小红书同步推送**：每日关键词搜索 + LLM 筛选，不受 arXiv 休息日影响
 - 🔄 **去重机制**：记录已推送论文，不重复推送
 - 🧩 **多 LLM 支持**：Claude / MiniMax / OpenAI / DeepSeek / 智谱 / Kimi / 通义，一行配置切换
 - ⚙️ **零服务器部署**：完全基于 GitHub Actions，免费自动运行
@@ -42,9 +42,10 @@
 
 点击右上角 **Fork**，将仓库复制到你的 GitHub 账号下。
 
-### 第二步：改关键词
+### 第二步：改关键词 + 安装依赖
 
-编辑 `config.yml`，填写你关心的关键词和分类（其他选项可以先不动）：
+编辑 `config.yml`，填写你关心的关键词和分类（其他选项可以先不动）
+也可以直接在 GitHub 网页上点击文件然后点编辑，无需 clone 到本地！
 
 ```yaml
 keywords:
@@ -59,7 +60,7 @@ categories:        # arxiv 分类，留空则搜全类别
 
 ### 第三步：配置 GitHub Secrets
 
-进入你 fork 的仓库 → **Settings → Secrets and variables → Actions → New repository secret**，添加以下 4 个密钥：
+进入你 fork 的仓库 → **Settings → Secrets and variables → Actions → New repository secret**，添加以下密钥：
 
 | Secret 名称 | 说明 |
 |------------|------|
@@ -67,12 +68,13 @@ categories:        # arxiv 分类，留空则搜全类别
 | `EMAIL_USER` | 发件邮箱地址（163 / Gmail / QQ）|
 | `EMAIL_PASS` | 发件邮箱**授权码**（非登录密码，见下方说明）|
 | `EMAIL_TO` | 收件邮箱地址 |
+| `XHS_COOKIE` | 小红书网页 Cookie（不填则跳过小红书推送）⚠️ Cookie 有时效，约30天需重新更新 |
 
 ### 第四步：手动触发一次验证
 
 进入 **Actions → Daily Paper Digest → Run workflow**，手动触发一次，确认邮件正常收到。
 
-之后每个工作日（周一至周五）北京时间 **12:00** 自动推送。
+之后每天北京时间 **12:00** 自动推送（arXiv 休息日 Fri/Sat 仍会推送小红书内容）。
 
 ---
 
@@ -128,7 +130,7 @@ max_papers: 10
 # LLM 评分门槛（1-10），低于此分的论文不推送
 # 调高（如 8）→ 更严格，推送更少但更相关
 # 调低（如 4）→ 更宽松，推送更多
-min_score: 6
+min_score: 5
 
 # 候选池大小：先从 arxiv 搜索这么多篇，再让 LLM 筛选
 candidate_pool: 50
@@ -138,6 +140,13 @@ smtp_provider: "163"   # 可选：163 / gmail / qq
 
 # LLM 服务商
 llm_provider: minimax  # 可选：minimax / claude / openai / deepseek / zhipu / moonshot / qwen
+
+# ── 小红书配置 ───────────────────────────────────────────────
+# 留空则复用上方 keywords；单独配置搜索词在此填写
+xhs_keywords: []
+
+# 小红书初始候选数量（不填默认 30）
+xhs_candidate_pool: 30
 ```
 
 ---
@@ -148,16 +157,18 @@ llm_provider: minimax  # 可选：minimax / claude / openai / deepseek / zhipu /
 git clone https://github.com/yzbcs/Arxiv-Daily-Digest.git
 cd Arxiv-Daily-Digest
 pip install -r requirements.txt
+npm install
 
 export LLM_API_KEY="your_api_key"
-export EMAIL_USER="xxx@163.com"
+export EMAIL_USER="xxx@163.com"       # 可选，163/gmail/qq
 export EMAIL_PASS="your_smtp_password"
-export EMAIL_TO="xxx@qq.com"
+export EMAIL_TO="xxx@qq.com"          # 可选，163/gmail/qq，不要与EMAIL_USER为同一邮箱即可
+export XHS_COOKIE="your_xhs_cookie"   # 可选，不填则跳过小红书
 
 # 预览模式：不发邮件，结果保存到 preview.html
 python3 main.py --dry-run
 
-# 补跑指定日期的论文批次
+# 补跑指定日期的论文批次（小红书按今天时间搜索）
 python3 main.py --dry-run --date 2026-04-03
 
 # 正式运行（发送邮件）
@@ -173,17 +184,25 @@ python3 main.py
 ├── main.py                      # 主入口，串联各模块
 ├── fetchers/
 │   ├── arxiv_fetcher.py         # arXiv 搜索 + 去重
-│   └── arxiv_schedule.py        # arXiv 公告批次时间计算
+│   ├── arxiv_schedule.py        # arXiv 公告批次时间计算
+│   ├── xhs_fetcher.py           # 小红书笔记搜索
+│   ├── xhs_util.py              # 小红书请求签名（JS 加密）
+│   ├── xhs_pc_apis.py          # 小红书 PC 端 API
+│   └── xhs_cookie_util.py      # Cookie 字符串解析
 ├── llm/
-│   └── filter_and_summarize.py  # LLM 筛选 + 中文摘要
+│   ├── filter_and_summarize.py   # arXiv LLM 筛选 + 中文摘要
+│   └── filter_and_summarize_xhs.py  # 小红书 LLM 筛选
 ├── render/
 │   └── email_renderer.py        # Jinja2 渲染 HTML 邮件
 ├── templates/
-│   └── email.html               # 邮件模板
+│   └── email.html               # 邮件模板（Tab 切换布局）
 ├── sender/
 │   └── smtp_sender.py           # SMTP 发送
-├── data/
-│   └── sent_ids.json            # 已推送记录（自动维护）
+├── package.json                 # Node.js 依赖（小红书签名用）
+├── package-lock.json            # Node.js 依赖版本锁定
+├── static/
+│   ├── xhs_xs_xsc_56.js         # 小红书签名 JS（webpack bundle）
+│   └── xhs_xray.js              # 小红书 xray 签名 JS
 └── .github/workflows/
     └── daily.yml                # GitHub Actions 定时任务
 ```

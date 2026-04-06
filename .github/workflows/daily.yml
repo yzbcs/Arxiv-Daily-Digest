@@ -2,7 +2,7 @@ name: Daily Paper Digest
 
 on:
   schedule:
-    - cron: "0 4 * * 1-5"  # UTC 04:00 = 北京时间 12:00，仅周一到周五
+    - cron: "0 4 * * *"    # UTC 04:00 = 北京时间 12:00，每天（小红书不休息）
   workflow_dispatch:        # 支持手动触发（测试用）
 
 jobs:
@@ -18,7 +18,15 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install Node.js dependencies
+        run: npm install
+
+      - name: Install Python dependencies
         run: pip install -r requirements.txt
 
       - name: Run daily digest
@@ -27,4 +35,5 @@ jobs:
           EMAIL_USER:  ${{ secrets.EMAIL_USER }}
           EMAIL_PASS:  ${{ secrets.EMAIL_PASS }}
           EMAIL_TO:    ${{ secrets.EMAIL_TO }}
+          XHS_COOKIE:  ${{ secrets.XHS_COOKIE }}
         run: python main.py

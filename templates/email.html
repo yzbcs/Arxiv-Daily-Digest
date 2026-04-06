@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日论文推送 · {{ date }}</title>
+<title>每日推送 · {{ date }}</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: #eef0f5; font-family: -apple-system, 'PingFang SC', 'Segoe UI', sans-serif; padding: 30px 16px; }
@@ -35,75 +35,117 @@ body { background: #eef0f5; font-family: -apple-system, 'PingFang SC', 'Segoe UI
 }
 .pill b { color: #7ecfff; }
 
-/* ── Body ── */
-.body { padding: 24px 28px; }
+/* ── Tab 切换（纯 CSS，不依赖 JS）── */
+.tabs-wrap { padding: 0 24px; }
+.tab-radio { display: none; }
+.tab-bar {
+  display: flex;
+  border-bottom: 2px solid #e8eaef;
+  margin-top: 16px;
+}
+.tab-label {
+  flex: 1;
+  text-align: center;
+  padding: 12px 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #888;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+  user-select: none;
+}
+.tab-label:hover { color: #555; }
+
+/* 激活态 */
+#tab-arxiv:checked ~ .tab-bar .tab-label-arxiv {
+  color: #3b5bdb;
+  border-bottom-color: #3b5bdb;
+}
+#tab-xhs:checked ~ .tab-bar .tab-label-xhs {
+  color: #FF2442;
+  border-bottom-color: #FF2442;
+}
+
+/* 面板显隐 */
+.tab-panel { display: none; padding: 20px 0; }
+#tab-arxiv:checked ~ .panel-arxiv { display: block; }
+#tab-xhs:checked ~ .panel-xhs { display: block; }
 
 /* ── Cards ── */
 .card {
   border: 1px solid #e8eaef;
-  border-radius: 12px;
-  margin-bottom: 14px;
+  border-radius: 10px;
+  margin-bottom: 10px;
   overflow: hidden;
+  background: #fff;
 }
 .card:last-child { margin-bottom: 0; }
+.card-inner { padding: 14px 16px; }
 
-.card-inner { padding: 18px 20px; }
-
-.card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
-.card-tags { display: flex; gap: 5px; flex-wrap: wrap; }
-.tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
-.tag-agent    { background: #e8f5e9; color: #2e7d32; }
-.tag-skill    { background: #fff3e0; color: #e65100; }
-.tag-openclaw { background: #fce4ec; color: #c62828; }
-.tag-default  { background: #f3f4f6; color: #555; }
+.card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.card-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+.tag { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; background: #f3f4f6; color: #555; }
 .card-date { font-size: 11px; color: #aaa; white-space: nowrap; }
 
-.card-title { font-size: 15px; font-weight: 700; color: #1a1a2e; line-height: 1.45; margin-bottom: 5px; }
+.card-title { font-size: 14px; font-weight: 700; color: #1a1a2e; line-height: 1.45; margin-bottom: 4px; }
 .card-title a { color: inherit; text-decoration: none; }
-.card-byline { font-size: 12px; color: #999; margin-bottom: 12px; }
+.card-title a:hover { text-decoration: underline; }
+.card-byline { font-size: 11px; color: #999; margin-bottom: 10px; }
 
 .summary {
   background: #f4f6ff; border-left: 3px solid #3b5bdb;
-  border-radius: 0 8px 8px 0; padding: 9px 13px;
-  font-size: 13px; color: #333; line-height: 1.6; margin-bottom: 12px;
+  border-radius: 0 6px 6px 0; padding: 8px 12px;
+  font-size: 12px; color: #333; line-height: 1.6; margin-bottom: 10px;
+}
+.summary-xhs {
+  background: #fff5f6; border-left: 3px solid #FF2442;
+  border-radius: 0 6px 6px 0; padding: 8px 12px;
+  font-size: 12px; color: #333; line-height: 1.6; margin-bottom: 10px;
 }
 .summary .label { font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #3b5bdb; display: block; margin-bottom: 3px; }
+.summary-xhs .label { font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #FF2442; display: block; margin-bottom: 3px; }
 
-.card-links { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
-.btn { font-size: 11px; font-weight: 600; padding: 5px 13px; border-radius: 6px; text-decoration: none; }
+.card-links { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.btn { font-size: 11px; font-weight: 600; padding: 4px 11px; border-radius: 6px; text-decoration: none; }
 .btn-arxiv { background: #b31b1b; color: #fff; }
 .btn-pdf   { background: #1a73e8; color: #fff; }
+.btn-xhs   { background: #FF2442; color: #fff; }
 
-/* ── details/summary 展开收起（无需 JS，邮件客户端兼容）── */
-details {
-  border-top: 1px solid #eef0f8;
-  background: #fafbff;
-}
+/* ── details/summary 展开收起 ── */
+details { border-top: 1px solid #eef0f8; background: #fafbff; }
 details summary {
   display: flex; align-items: center; gap: 6px;
-  padding: 10px 20px; cursor: pointer;
+  padding: 9px 16px; cursor: pointer;
   font-size: 12px; font-weight: 600; color: #3b5bdb;
-  list-style: none; /* 去掉默认三角 */
-  user-select: none;
+  list-style: none; user-select: none;
 }
 details summary::-webkit-details-marker { display: none; }
-details summary::before {
-  content: "▶";
-  font-size: 10px; transition: transform 0.2s;
-}
+details summary::before { content: "▶"; font-size: 10px; }
 details[open] summary::before { content: "▼"; }
 details summary:hover { background: #eef2ff; }
-
 .detail-body {
-  padding: 10px 20px 16px;
-  font-size: 13px; color: #444; line-height: 1.8;
+  padding: 10px 16px 14px;
+  font-size: 12px; color: #444; line-height: 1.8;
   white-space: pre-wrap;
   border-top: 1px solid #eef0f8;
 }
 .detail-label {
   font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
-  text-transform: uppercase; color: #3b5bdb; display: block; margin-bottom: 8px;
+  text-transform: uppercase; color: #3b5bdb; display: block; margin-bottom: 6px;
 }
+
+/* ── 休息/空提示 ── */
+.rest-hint {
+  text-align: center;
+  color: #999;
+  font-size: 15px;
+  padding: 60px 20px;
+  line-height: 1.8;
+}
+.rest-hint .emoji { font-size: 36px; display: block; margin-bottom: 12px; }
+.empty-hint { text-align: center; color: #bbb; font-size: 13px; padding: 30px 0; }
 
 /* ── Footer ── */
 .footer {
@@ -112,7 +154,6 @@ details summary:hover { background: #eef2ff; }
   font-size: 12px; color: #aaa;
 }
 .footer a { color: #3b5bdb; text-decoration: none; }
-.empty-hint { text-align: center; color: #bbb; font-size: 13px; padding: 40px 0; }
 </style>
 </head>
 <body>
@@ -120,75 +161,129 @@ details summary:hover { background: #eef2ff; }
 
   <!-- Header -->
   <div class="header">
-    <div class="eyebrow">📄 ArXiv Daily Digest</div>
-    <h1>今日论文推送</h1>
+    <div class="eyebrow">📬 Daily Digest</div>
+    <h1>今日推送</h1>
     <div class="meta">{{ date }} · {{ weekday }}</div>
     <div class="pills">
-      <div class="pill">共 <b>{{ papers | length }}</b> 篇精选</div>
+      {% if not arxiv_rest %}
+      <div class="pill">📄 arXiv <b>{{ papers | length }}</b> 篇</div>
+      {% endif %}
+      {% if xhs_notes %}
+      <div class="pill">📕 小红书 <b>{{ xhs_notes | length }}</b> 条</div>
+      {% endif %}
       <div class="pill">关键词：{{ keywords | join(' · ') }}</div>
-      <div class="pill">来源：arXiv · 48h 内</div>
     </div>
   </div>
 
-  <!-- Body -->
-  <div class="body">
-    {% if papers %}
-      {% for p in papers %}
-      <div class="card">
+  <!-- Tab 切换 -->
+  <div class="tabs-wrap">
+    {# 默认 Tab：有论文选 arXiv，否则选小红书 #}
+    {% if papers and not arxiv_rest %}
+    <input type="radio" name="tab" id="tab-arxiv" class="tab-radio" checked>
+    <input type="radio" name="tab" id="tab-xhs" class="tab-radio">
+    {% else %}
+    <input type="radio" name="tab" id="tab-arxiv" class="tab-radio">
+    <input type="radio" name="tab" id="tab-xhs" class="tab-radio" checked>
+    {% endif %}
 
-        <div class="card-inner">
-          <div class="card-top">
-            <div class="card-tags">
-              {% for kw in p.matched_keywords %}
-              <span class="tag tag-{{ kw | lower | replace(' ', '-') }}">{{ kw }}</span>
-              {% endfor %}
-              {% if not p.matched_keywords %}
-              <span class="tag tag-default">arxiv</span>
+    <div class="tab-bar">
+      <label class="tab-label tab-label-arxiv" for="tab-arxiv">📄 arXiv 论文</label>
+      <label class="tab-label tab-label-xhs" for="tab-xhs">📕 小红书笔记</label>
+    </div>
+
+    <!-- arXiv 面板 -->
+    <div class="tab-panel panel-arxiv">
+      {% if arxiv_rest %}
+        <div class="rest-hint">
+          <span class="emoji">😴</span>
+          今天我们休息，没有发表的论文～
+        </div>
+      {% elif papers %}
+        {% for p in papers %}
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="card-tags">
+                {% for kw in p.matched_keywords %}
+                <span class="tag">{{ kw }}</span>
+                {% endfor %}
+                {% if not p.matched_keywords %}
+                <span class="tag">arxiv</span>
+                {% endif %}
+              </div>
+              <span class="card-date">{{ p.published }}</span>
+            </div>
+            <div class="card-title">
+              <a href="{{ p.url }}" target="_blank">{{ p.title }}</a>
+            </div>
+            <div class="card-byline">{{ p.authors | join(', ') }}</div>
+            {% if p.summary_zh %}
+            <div class="summary">
+              <span class="label">💡 一句话总结</span>
+              {{ p.summary_zh }}
+            </div>
+            {% endif %}
+            <div class="card-links">
+              <a class="btn btn-arxiv" href="{{ p.url }}" target="_blank">arXiv</a>
+              {% if p.pdf_url %}
+              <a class="btn btn-pdf" href="{{ p.pdf_url }}" target="_blank">PDF</a>
               {% endif %}
             </div>
-            <span class="card-date">{{ p.published }}</span>
           </div>
-
-          <div class="card-title">
-            <a href="{{ p.url }}" target="_blank">{{ p.title }}</a>
-          </div>
-          <div class="card-byline">{{ p.authors | join(', ') }}</div>
-
-          {% if p.summary_zh %}
-          <div class="summary">
-            <span class="label">💡 一句话总结</span>
-            {{ p.summary_zh }}
-          </div>
+          {% if p.detail_zh %}
+          <details>
+            <summary>📋 详细解读</summary>
+            <div class="detail-body"><span class="detail-label">论文解读</span>{{ p.detail_zh | trim }}</div>
+          </details>
           {% endif %}
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="empty-hint">今日暂无匹配论文</div>
+      {% endif %}
+    </div>
 
-          <div class="card-links">
-            <a class="btn btn-arxiv" href="{{ p.url }}" target="_blank">arXiv</a>
-            {% if p.pdf_url %}
-            <a class="btn btn-pdf" href="{{ p.pdf_url }}" target="_blank">PDF</a>
+    <!-- 小红书面板 -->
+    <div class="tab-panel panel-xhs">
+      {% if xhs_notes %}
+        {% for n in xhs_notes %}
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="card-tags">
+                {% for kw in n.matched_keywords %}
+                <span class="tag">{{ kw }}</span>
+                {% endfor %}
+              </div>
+              {% if n.liked_count %}
+              <span class="card-date">❤️ {{ n.liked_count }}</span>
+              {% endif %}
+            </div>
+            <div class="card-title">
+              <a href="{{ n.url }}" target="_blank">{{ n.title }}</a>
+            </div>
+            {% if n.summary_zh %}
+            <div class="summary-xhs">
+              <span class="label">💡 内容总结</span>
+              {{ n.summary_zh }}
+            </div>
             {% endif %}
+            <div class="card-links">
+              <a class="btn btn-xhs" href="{{ n.url }}" target="_blank">小红书</a>
+            </div>
           </div>
         </div>
-
-        <!-- 展开区域：用 details/summary，不依赖 JS -->
-        {% if p.detail_zh %}
-        <details>
-          <summary>📋 详细解读</summary>
-          <div class="detail-body">
-            <span class="detail-label">论文解读</span>{{ p.detail_zh | trim }}</div>
-        </details>
-        {% endif %}
-
-      </div>
-      {% endfor %}
-    {% else %}
-      <div class="empty-hint">今日暂无匹配论文</div>
-    {% endif %}
+        {% endfor %}
+      {% else %}
+        <div class="empty-hint">今日暂无小红书内容</div>
+      {% endif %}
+    </div>
   </div>
 
   <!-- Footer -->
   <div class="footer">
-    由 <strong>arxiv-daily</strong> 自动生成 · 每天 08:00 推送<br>
-    <a href="https://github.com/YOUR_USERNAME/arxiv-daily">GitHub</a>
+    由 <strong>arxiv-daily</strong> 自动生成 · 每天 12:00 推送<br>
+    <a href="https://github.com/yzbcs/Arxiv-Daily-Digest">GitHub</a>
   </div>
 
 </div>

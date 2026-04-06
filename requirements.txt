@@ -5,3 +5,6 @@ openai
 jinja2
 pyyaml
 pytz
+PyExecJS
+loguru
+requests
