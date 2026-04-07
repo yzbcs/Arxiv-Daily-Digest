@@ -9,9 +9,9 @@ import json
 from llm.filter_and_summarize import _call_llm, _parse_json_response, _build_keyword_tiers
 
 
-def _diversify_with_llm(notes: list[dict], llm_provider: str, api_key: str) -> list[dict]:
+def _diversify_with_llm(notes: list[dict], top_n: int, llm_provider: str, api_key: str) -> list[dict]:
     """
-    话题多样化筛选：让 LLM 从候选笔记中挑选覆盖不同话题的子集，
+    话题多样化筛选：让 LLM 从候选笔记中挑选 top_n 篇覆盖不同话题的子集，
     避免多篇内容高度重复的笔记同时出现。
     """
     if len(notes) <= 1:
@@ -27,11 +27,11 @@ def _diversify_with_llm(notes: list[dict], llm_provider: str, api_key: str) -> l
     prompt = f"""你是一位内容策展编辑，负责从候选笔记中挑选出一个多样化的推送列表。
 
 要求：
-1. 从下面 {len(notes)} 篇候选笔记中，选出组成最终推送的子集
+1. 从下面 {len(notes)} 篇候选笔记中，选出 {top_n} 篇组成最终推送
 2. 优先选择**话题不同**的笔记，同一话题的多篇只保留评分最高的 1 篇
 3. "同一话题"指围绕同一个产品、项目、功能、事件展开（如多篇都是讲 OpenClaw 4.5 更新的，只留 1 篇；讲 Agent 项目分享的只留 1 篇）
 4. 在满足话题多样化的前提下，尽量保留评分高的笔记
-5. 最终输出不超过 {len(notes)} 篇的 ID 列表
+5. 最终输出恰好 {top_n} 篇（如果去重后不够 {top_n} 篇，则输出所有非重复的）
 
 **输出格式**（严格 JSON，只输出 id 列表，不要其他文字）：
 {{
@@ -115,9 +115,10 @@ def filter_and_summarize_xhs(
 
     all_scored.sort(key=lambda x: (-x.get("score", 0), x.get("id", "")))
 
-    output = [n for n in all_scored if n.get("score", 0) >= min_score][:top_n]
-    # 话题去重：交给 LLM 判断，保留话题多样化的高分笔记
-    output = _diversify_with_llm(output, llm_provider, api_key)
+    above_threshold = [n for n in all_scored if n.get("score", 0) >= min_score]
+    # 话题去重：给 LLM 更多候选（2倍 top_n），让它挑出 top_n 篇不同话题的
+    candidates_for_dedup = above_threshold[:top_n * 2]
+    output = _diversify_with_llm(candidates_for_dedup, top_n, llm_provider, api_key)
 
     if not output and all_scored:
         output = all_scored[:1]
