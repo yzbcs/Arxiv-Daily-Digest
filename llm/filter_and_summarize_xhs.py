@@ -63,7 +63,18 @@ def _diversify_with_llm(notes: list[dict], top_n: int, llm_provider: str, api_ke
     selected = [id_to_note[iid] for iid in kept_ids if iid in id_to_note]
     # 保持原分数降序排列
     selected.sort(key=lambda x: -x.get("score", 0))
-    return selected
+
+    # 如果 LLM 返回不够 top_n 篇，从候选中按分数递补
+    if len(selected) < top_n:
+        selected_ids = {n["id"] for n in selected}
+        for note in notes:
+            if note["id"] not in selected_ids:
+                selected.append(note)
+                selected_ids.add(note["id"])
+            if len(selected) >= top_n:
+                break
+
+    return selected[:top_n]
 
 
 def filter_and_summarize_xhs(
