@@ -78,5 +78,5 @@ jobs:
           personal_token: ${{ secrets.Yzbcs_TOKEN }}
           publish_dir: ./study
           external_repository: yzbcs/yzbcs.github.io
-          publish_branch: main
+          publish_branch: master
           commit_message: "auto: sync daily digest $(date +%Y-%m-%d)"
