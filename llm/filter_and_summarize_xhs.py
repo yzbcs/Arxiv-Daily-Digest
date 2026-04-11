@@ -191,7 +191,7 @@ def filter_and_summarize_xhs(
     # 话题去重：给 LLM 更多候选（2 倍 top_n），让它挑出 top_n 篇不同话题的
     candidates_for_dedup = (above_threshold if len(above_threshold) >= top_n * 2 else all_scored)[:top_n * 2]
     # fallback_pool: 从 all_scored 剩余候选中递补（排除已入选的，不受 min_score 限制）
-    selected_ids_in_dedup = set(candidates_for_dedup[:top_n * 2])
+    selected_ids_in_dedup = {n["id"] for n in candidates_for_dedup[:top_n * 2]}
     fallback_pool = [n for n in all_scored if n["id"] not in selected_ids_in_dedup]
     output = _diversify_with_llm(candidates_for_dedup, top_n, llm_provider, api_key, fallback_pool)
 
