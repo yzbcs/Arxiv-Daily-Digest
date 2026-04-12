@@ -6,16 +6,22 @@
 # ── 论文关键词 ──────────────────────────────────────────────
 # 支持多个关键词，命中任意一个即进入候选（OR 关系）
 # 代码会自动将单词两两组合成高优先级短语（如 agent+skill → "agent skill"）
-# 专有框架名（如 openclaw）打分权重最高
+# 专有框架名打分权重最高
 keywords:
-  - agent
-  - skill
+  - LLM Agent
+  - Agent
+  - Skill
+  - Skill Learning
+  - Skill Retrieval
+  - Skill Refinement
+  - Skill Evolution
   - openclaw
 
 # ── arxiv 分类 ──────────────────────────────────────────────
 # 留空则搜索全部分类。常用：cs.AI cs.LG cs.RO cs.CL cs.CV
 categories:
   - cs.AI
+  - cs.CL
   - cs.LG
   - cs.RO
 
@@ -30,7 +36,7 @@ min_score: 5
 
 # arxiv 初始搜索数量，由 LLM 从中筛选出 max_papers 篇
 # 建议 candidate_pool >= max_papers * 3
-candidate_pool: 50
+candidate_pool: 80
 
 # ── 邮件与 LLM 配置 ─────────────────────────────────────────
 # 发件邮箱服务商（163 / gmail / qq）
@@ -47,4 +53,4 @@ llm_provider: minimax
 xhs_keywords: []
 
 # 小红书初始搜索候选数量（每个关键词均分）
-xhs_candidate_pool: 50
+xhs_candidate_pool: 80
