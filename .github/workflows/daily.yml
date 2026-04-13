@@ -71,10 +71,34 @@ jobs:
 
       - name: Fetch existing data.json from target repo
         run: |
-          curl -sL "https://yzbcs.github.io/study/data.json" -o study/data.json || echo '{"notes":[]}' > study/data.json
+          # 尝试拉取现有 data.json，最多重试 3 次
+          for i in 1 2 3; do
+            if curl -sL --max-time 10 "https://yzbcs.github.io/study/data.json" -o study/data.json; then
+              # 校验是否为有效 JSON
+              if python3 -c "import json; json.load(open('study/data.json'))" 2>/dev/null; then
+                echo "✅ 成功拉取现有 data.json"
+                cat study/data.json
+                break
+              fi
+            fi
+            echo "⚠️ 第 $i 次拉取失败，等待 5 秒后重试..."
+            sleep 5
+          done
+          # 如果仍然失败，使用空数据（但打印警告）
+          if [ ! -f study/data.json ] || ! python3 -c "import json; json.load(open('study/data.json'))" 2>/dev/null; then
+            echo "❌ 无法拉取现有 data.json，将创建新索引（历史记录可能丢失！）"
+            echo '{"notes":[]}' > study/data.json
+          fi
 
       - name: Update data.json
         run: python3 scripts/update_study_data.py
+
+      - name: Verify data.json content
+        run: |
+          echo "📄 即将推送的 data.json 内容："
+          cat study/data.json
+          echo ""
+          echo "📊 记录数量：$(python3 -c 'import json; print(len(json.load(open("study/data.json"))["notes"]))')"
 
       - name: Push to yzbcs.github.io
         run: |
