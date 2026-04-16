@@ -220,11 +220,11 @@ python3 main.py
 
 ## 🌐 推送到个人主页（可选）
 
-每日 digest HTML 可以同步到你的 GitHub Pages 个人主页（`yzbcs.github.io/study/`）归档展示。
+每日 digest HTML 可以同步到你的 GitHub Pages 个人主页（`用户名.github.io/study/`）归档展示。
 
 ### 启用条件
 
-1. 拥有 `yzbcs/yzbcs.github.io` 仓库（作为 GitHub Pages 部署源）
+1. 拥有 `用户名/用户名.github.io` 仓库（作为 GitHub Pages 部署源）
 2. 生成一个 **Personal Access Token**（勾选 `repo` 权限）
 3. 在本仓库添加 Secret：
    - 仓库 → **Settings → Secrets and variables → Actions → New repository secret**
@@ -248,6 +248,8 @@ python3 main.py
 3. 推送到 `yzbcs/yzbcs.github.io` 仓库
 
 访问地址：`https://yzbcs.github.io/study/`
+
+具体教程参考：https://my.feishu.cn/wiki/JythwiB2aiKt06kprxlcDOQnnNg?from=from_copylink
 
 > ⚠️ fork 用户不会触发此功能，只正常收到邮件推送。
 
