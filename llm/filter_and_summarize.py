@@ -200,7 +200,7 @@ PROVIDER_REGISTRY = {
     "moonshot": ("openai",    "https://api.moonshot.cn/v1",                 "moonshot-v1-8k"),
     "qwen":     ("openai",    "https://dashscope.aliyuncs.com/compatible-mode/v1", "qwen-plus"),
     "xingjiabiapi": ("openai", "https://df.dawnloadai.com:8443/v1",        "MiniMax-M2.7-highspeed"),
-    "opencode": ("openai",    "https://opencode.ai/zen/go/v1",             "opencode-go/kimi-k2.6"),
+    "opencode": ("openai",    "https://opencode.ai/zen/go/v1",             "opencode-go/minimax-m2.7"),
 }
 
 
