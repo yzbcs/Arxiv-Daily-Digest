@@ -44,7 +44,7 @@ smtp_provider: "163"
 
 # LLM 服务商，可选：minimax / claude / openai / deepseek / zhipu / moonshot / qwen
 # 对应 API Key 填写到 GitHub Secrets 的 LLM_API_KEY
-llm_provider: xingjiabiapi
+llm_provider: opencode
 
 # ── 小红书配置 ───────────────────────────────────────────────
 # 留空则复用上方 keywords；如需单独配置小红书搜索词，在此填写
