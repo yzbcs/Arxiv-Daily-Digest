@@ -233,10 +233,7 @@ python3 main.py
 ├── render/
 │   └── email_renderer.py        # Jinja2 HTML email renderer
 ├── templates/
-│   ├── email.html               # Email template (side-by-side layout)
-│   └── study_index.html         # GitHub Pages archive page template
-├── scripts/
-│   └── update_study_data.py    # Updates GitHub Pages archive index data.json
+│   └── email.html               # Email template (side-by-side layout)
 ├── sender/
 │   └── smtp_sender.py           # SMTP sender
 ├── package.json                 # Node.js dependencies (Xiaohongshu signing)
@@ -247,41 +244,6 @@ python3 main.py
 └── .github/workflows/
     └── daily.yml                # GitHub Actions cron job
 ```
-
----
-
-## 🌐 Push to GitHub Pages (Optional)
-
-Your daily digest HTML can also be archived on your GitHub Pages site (`yzbcs.github.io/study/`).
-
-### Prerequisites
-
-1. You have a `yzbcs/yzbcs.github.io` repository (deployed as GitHub Pages)
-2. Generate a **Personal Access Token** (classic, with `repo` scope)
-3. Add a Secret in this repo:
-   - Go to **Settings → Secrets and variables → Actions → New repository secret**
-   - Name: `Yzbcs_TOKEN`
-   - Secret: paste your PAT
-
-### Target Repo Init
-
-In `yzbcs/yzbcs.github.io` on the `main` branch, add:
-
-**`study/data.json`**:
-```json
-{"notes": []}
-```
-
-### How It Works
-
-After each daily push, the workflow automatically:
-1. Copies `preview.html` to `study/daily/YYYY/MM/YYYY-MM-DD.html`
-2. Updates `study/data.json` index
-3. Pushes to `yzbcs/yzbcs.github.io`
-
-Live at: `https://yzbcs.github.io/study/`
-
-> ⚠️ Fork users will NOT trigger this — only the original repo owner.
 
 ---
 

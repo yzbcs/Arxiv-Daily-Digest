@@ -226,10 +226,7 @@ python3 main.py
 ├── render/
 │   └── email_renderer.py        # Jinja2 渲染 HTML 邮件
 ├── templates/
-│   ├── email.html               # 邮件模板（并排双栏布局）
-│   └── study_index.html         # GitHub Pages 归档页模板
-├── scripts/
-│   └── update_study_data.py    # 更新归档索引 data.json
+│   └── email.html               # 邮件模板（并排双栏布局）
 ├── sender/
 │   └── smtp_sender.py           # SMTP 发送
 ├── package.json                 # Node.js 依赖（小红书签名用）
@@ -240,43 +237,6 @@ python3 main.py
 └── .github/workflows/
     └── daily.yml                # GitHub Actions 定时任务
 ```
-
----
-
-## 🌐 推送到个人主页（可选）
-
-每日 digest HTML 可以同步到你的 GitHub Pages 个人主页（`用户名.github.io/study/`）归档展示。
-
-### 启用条件
-
-1. 拥有 `用户名/用户名.github.io` 仓库（作为 GitHub Pages 部署源）
-2. 生成一个 **Personal Access Token**（勾选 `repo` 权限）
-3. 在本仓库添加 Secret：
-   - 仓库 → **Settings → Secrets and variables → Actions → New repository secret**
-   - Name: `Yzbcs_TOKEN`
-   - Secret: 粘贴你生成的 PAT
-
-### 目标仓库初始化
-
-在 `yzbcs/yzbcs.github.io` 仓库的 `main` 分支根目录添加初始文件：
-
-**`study/data.json`**（内容为）：
-```json
-{"notes": []}
-```
-
-### 效果
-
-启用后，每次定时推送会自动：
-1. 把当天 `preview.html` 复制到 `study/daily/YYYY/MM/YYYY-MM-DD.html`
-2. 更新 `study/data.json` 索引
-3. 推送到 `yzbcs/yzbcs.github.io` 仓库
-
-访问地址：`https://yzbcs.github.io/study/`
-
-### 具体教程参考：/docs/个人主页归档配置教程.md
-
-> ⚠️ fork 用户不会触发此功能，只正常收到邮件推送。
 
 ---
 
