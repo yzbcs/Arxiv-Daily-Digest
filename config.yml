@@ -46,7 +46,7 @@ smtp_provider: "163"
 # 内置可选：minimax / claude / openai / deepseek / zhipu / moonshot / qwen
 # 也可填自定义名称（需在下方 custom_llm 中定义）
 # 对应 API Key 填写到 GitHub Secrets 的 LLM_API_KEY
-llm_provider: minimax
+llm_provider: my_api
 
 # ── 自定义 LLM 提供商（可选）────────────────────────────────
 # 当你使用的 API 不在内置列表中时，在此配置。
@@ -76,7 +76,12 @@ llm_provider: minimax
 #   # 然后在上方 llm_provider 填：llm_provider: my_claude
 #
 # 默认不使用自定义 API，保持空配置：
-custom_llm: {}
+custom_llm: {
+  my_api:
+    sdk: openai
+    base_url: "https://opencode.ai/zen/go/v1"
+    model: "minimax-m2.7"
+}
 
 # ── 小红书配置 ───────────────────────────────────────────────
 # 留空则复用上方 keywords；如需单独配置小红书搜索词，在此填写
