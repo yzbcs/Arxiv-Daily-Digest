@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日推送 · 2026年04月23日</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #eef0f5; font-family: -apple-system, 'PingFang SC', 'Segoe UI', sans-serif; padding: 30px 16px; }
+
+.email-wrap { max-width: 960px; margin: 0 auto; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 32px rgba(0,0,0,0.10); }
+
+/* ── Header ── */
+.header { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); padding: 28px 28px 20px; color: #fff; }
+.header .eyebrow { font-size: 11px; letter-spacing: 3px; color: #7ecfff; text-transform: uppercase; margin-bottom: 8px; }
+.header h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
+.header .meta { font-size: 12px; color: #a0b8cc; margin-bottom: 14px; }
+.pills { display: flex; gap: 10px; flex-wrap: wrap; }
+.pill { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); border-radius: 20px; padding: 4px 13px; font-size: 11px; color: #d0e8ff; }
+.pill b { color: #7ecfff; }
+
+/* ── 两栏布局 ── */
+.content-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.col-header-row th { width: 50%; text-align: left; padding: 14px 14px 10px; background: #fff; border-bottom: 1px solid #e8eaef; }
+.col-header-arxiv { color: #3b5bdb; font-size: 13px; font-weight: 700; border-bottom: 2px solid #3b5bdb; display: inline-block; padding-bottom: 2px; }
+.col-header-xhs { color: #FF2442; font-size: 13px; font-weight: 700; border-bottom: 2px solid #FF2442; display: inline-block; padding-bottom: 2px; }
+
+/* 卡片行 */
+.card-row td { width: 50%; vertical-align: top; padding: 12px 14px; border-top: 1px solid #e8eaef; }
+.card-row td:first-child { border-right: 1px solid #e8eaef; }
+.rest-cell { padding: 40px 14px; text-align: center; color: #bbb; font-size: 13px; font-style: italic; }
+
+/* ── Cards ── */
+.card { border: 1px solid #e8eaef; border-radius: 8px; overflow: hidden; height: 100%; display: flex; flex-direction: column; }
+.card-inner { padding: 12px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.card-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+.tag { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; background: #f3f4f6; color: #555; }
+.card-date { font-size: 10px; color: #aaa; white-space: nowrap; }
+.card-title { font-size: 13px; font-weight: 700; color: #1a1a2e; line-height: 1.45; }
+.card-title a { color: inherit; text-decoration: none; }
+.card-title a:hover { text-decoration: underline; }
+.card-byline { font-size: 11px; color: #999; }
+
+.summary { background: #f4f6ff; border-left: 2px solid #3b5bdb; border-radius: 0 4px 4px 0; padding: 6px 10px; font-size: 11px; color: #333; line-height: 1.6; margin-top: auto; }
+.summary-xhs { background: #fff5f6; border-left: 2px solid #FF2442; border-radius: 0 4px 4px 0; padding: 6px 10px; font-size: 11px; color: #333; line-height: 1.6; margin-top: auto; }
+.summary .label { font-size: 9px; font-weight: 700; letter-spacing: 1px; color: #3b5bdb; display: block; margin-bottom: 2px; }
+.summary-xhs .label { font-size: 9px; font-weight: 700; letter-spacing: 1px; color: #FF2442; display: block; margin-bottom: 2px; }
+
+.card-links { display: flex; gap: 4px; flex-wrap: wrap; margin-top: auto; }
+.btn { font-size: 10px; font-weight: 600; padding: 3px 9px; border-radius: 5px; text-decoration: none; }
+.btn-arxiv { background: #b31b1b; color: #fff; }
+.btn-pdf { background: #1a73e8; color: #fff; }
+.btn-xhs { background: #FF2442; color: #fff; }
+
+/* ── details/summary 展开收起 ── */
+details { border-top: 1px solid #eef0f8; background: #fafbff; }
+details summary { display: flex; align-items: center; gap: 6px; padding: 8px 12px; cursor: pointer; font-size: 11px; font-weight: 600; color: #3b5bdb; list-style: none; user-select: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: "▶"; font-size: 9px; }
+details[open] summary::before { content: "▼"; }
+details summary:hover { background: #eef2ff; }
+.detail-body { padding: 8px 12px 12px; font-size: 11px; color: #444; line-height: 1.7; white-space: pre-wrap; border-top: 1px solid #eef0f8; }
+.detail-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #3b5bdb; display: block; margin-bottom: 4px; }
+
+/* ── Footer ── */
+.footer { background: #f8f9ff; border-top: 1px solid #eaecf0; padding: 16px 24px; text-align: center; font-size: 11px; color: #aaa; }
+.footer a { color: #3b5bdb; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="email-wrap">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="eyebrow">📬 Daily Digest</div>
+    <h1>今日推送</h1>
+    <div class="meta">2026年04月23日 · 星期四</div>
+    <div class="pills">
+      
+      <div class="pill">📄 arXiv <b>10</b> 篇</div>
+      
+      
+      <div class="pill">📕 小红书 <b>10</b> 条</div>
+      
+      <div class="pill">关键词：LLM Agent · Agent · Skill · Skill Learning · Skill Retrieval · Skill Refinement · Skill Evolution · openclaw</div>
+    </div>
+  </div>
+
+  <!-- 两栏并排 -->
+  <table class="content-table">
+    <!-- 表头 -->
+    <tr class="col-header-row">
+      <th>
+        &nbsp;&nbsp;<span class="col-header-arxiv">📄 arXiv 论文</span>
+        
+      </th>
+      <th>
+        &nbsp;&nbsp;<span class="col-header-xhs">📕 小红书笔记</span>
+      </th>
+    </tr>
+
+    
+      
+    
+
+    
+    
+
+    
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">LLM Agent</span>
+                    
+                    <span class="tag">Agent</span>
+                    
+                    <span class="tag">Skill</span>
+                    
+                    <span class="tag">Skill Learning</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-04-22</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2604.20087v1" target="_blank">SkillLearnBench: Benchmarking Continual Learning Methods for Agent Skill Generation on Real-World Tasks</a>
+                </div>
+                <div class="card-byline">Shanshan Zhong, Yi Lu, Jingjie Ning, Yibing Wan, Lihan Feng</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  提出SkillLearnBench基准，用于评估代理技能持续学习方法在真实任务上的表现
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2604.20087v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2604.20087v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>该论文引入首个评估代理技能持续学习方法的基准测试平台。包含20个经验证的技能依赖任务，涵盖15个子领域，从真实世界任务中提取。核心贡献在于提供标准化评估环境，系统比较不同持续学习方法在技能自动获取和适应方面的效能，为技能学习研究提供关键评估资源。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">Skill Evolution</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 166</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/69e925c3000000001a02faec?xsec_token=AB7Ru5A275BL6Iq4egWM-y5IZQ6OCG5q9ExNuplt9V3lM=&amp;xsec_source=pc_search" target="_blank">ICLR 26｜我把Deep Research加速了5倍</a>
+                </div>
+                
+                <div class="summary-xhs">
+                  <span class="label">💡 内容总结</span>
+                  ICLR 2026 Spotlight论文：ParallelResearch用树状结构建模将Deep Research Agent效率提升5倍
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/69e925c3000000001a02faec?xsec_token=AB7Ru5A275BL6Iq4egWM-y5IZQ6OCG5q9ExNuplt9V3lM=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">Agent</span>
+                    
+                    <span class="tag">Skill</span>
+                    
+                    <span class="tag">Skill Learning</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-04-22</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2604.20133v1" target="_blank">EvoAgent: An Evolvable Agent Framework with Skill Learning and Multi-Agent Delegation</a>
+                </div>
+                <div class="card-byline">Aimin Zhang, Jiajing Guo, Fuwei Jia, Chen Lv, Boyu Wang</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  提出EvoAgent可进化框架，融合结构化技能学习与层级子代理委托机制
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2604.20133v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2604.20133v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>EvoAgent是一个可进化的大语言模型代理框架，核心创新在于将技能建模为配备触发机制和进化元数据的多文件结构化能力单元。通过用户反馈驱动的闭环优化实现持续技能生成和优化，结合层级子代理委托机制提升任务分解效率。实验表明该框架能有效实现技能的自动进化和复用。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">Agent</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 250</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/69e891d4000000001b001532?xsec_token=ABAHyYz5DpHUmf0IPBNLSfpEiYL9NUsiID-ZUUgzD9R8M=&amp;xsec_source=pc_search" target="_blank">如图</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/69e891d4000000001b001532?xsec_token=ABAHyYz5DpHUmf0IPBNLSfpEiYL9NUsiID-ZUUgzD9R8M=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">Agent</span>
+                    
+                    <span class="tag">Skill</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-04-22</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2604.20441v1" target="_blank">MedSkillAudit: A Domain-Specific Audit Framework for Medical Research Agent Skills</a>
+                </div>
+                <div class="card-byline">Yingyong Hou, Xinyuan Lao, Huimei Wang, Qianyu Yao, Wei Chen</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  提出医学研究代理技能的专用审计框架，评估科学完整性、方法有效性和边界安全性
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2604.20441v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2604.20441v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>该论文开发了针对医疗研究代理技能（Agent Skills）的领域特定审计框架。核心创新在于超越通用评估，聚焦科学完整性、方法学有效性、可复现性和边界安全性四个维度。通过初步评估验证了框架在检测代理技能缺陷方面的有效性，为医疗AI代理的可靠部署提供质量保障机制。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">Agent</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 104</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/69e98641000000001a02ad8e?xsec_token=AB7Ru5A275BL6Iq4egWM-y5NgaUr9CCEowgxVZZK-aTTc=&amp;xsec_source=pc_search" target="_blank">Agent 沙箱 Sandbox，一篇就够了</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/69e98641000000001a02ad8e?xsec_token=AB7Ru5A275BL6Iq4egWM-y5NgaUr9CCEowgxVZZK-aTTc=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">Agent</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-04-22</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2604.20193v1" target="_blank">LLM-Guided Safety Agent for Edge Robotics with an ISO-Compliant Perception-Compute-Control Architecture</a>
+                </div>
+                <div class="card-byline">Xu Huang, Ruofan Zhang, Lu Cheng, Yuefeng Song, Xu Huang</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  提出用于边缘机器人的LLM引导安全代理，基于ISO合规架构实现自然语言安全规则转化
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2604.20193v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2604.20193v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>该论文为边缘机器人安全控制提出LLM引导的安全代理方案。核心创新在于将自然语言安全规范转换为可执行谓词，建立ISO合规的低延迟感知-计算-控制架构。针对AI感知概率性与工业标准确定性要求间的矛盾，通过LLM实现语义理解和安全推理的结合，提升人机交互场景下的功能安全保障。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">Skill Learning</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 99</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/69e89c46000000002302228b?xsec_token=ABAHyYz5DpHUmf0IPBNLSfpAFQ-RsqkIlM4Te_I0E_Ugs=&amp;xsec_source=pc_search" target="_blank">最近升级了一下 deep research skill</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/69e89c46000000002302228b?xsec_token=ABAHyYz5DpHUmf0IPBNLSfpAFQ-RsqkIlM4Te_I0E_Ugs=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">Agent</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-04-22</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2604.20279v1" target="_blank">AgentLens: Adaptive Visual Modalities for Human-Agent Interaction in Mobile GUI Agents</a>
+                </div>
+                <div class="card-byline">Jeonghyeon Kim, Byeongjun Joung, Junwon Lee, Joohyung Lee, Taehoon Min</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  提出AgentLens框架，为移动GUI代理提供自适应视觉模态以优化人机交互
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2604.20279v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2604.20279v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>AgentLens针对移动GUI代理的通信问题，提出自适应视觉模态框架。核心创新在于超越前台执行（最大透明但阻止多任务）和后台执行（支持多任务但视觉意识弱）的二元选择。通过迭代设计开发中间态交互模式，在透明度和多任务能力间实现平衡，显著提升用户体验和代理执行效率。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">Skill</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 95</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/69e87e65000000001a02e230?xsec_token=ABAHyYz5DpHUmf0IPBNLSfpD8hC2Yw1kWS0zONybqhbTo=&amp;xsec_source=pc_search" target="_blank">0实习后端选手暑期总结帖（阿里篇）</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/69e87e65000000001a02e230?xsec_token=ABAHyYz5DpHUmf0IPBNLSfpD8hC2Yw1kWS0zONybqhbTo=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">LLM Agent</span>
+                    
+                    <span class="tag">Agent</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-04-22</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2604.20300v1" target="_blank">FSFM: A Biologically-Inspired Framework for Selective Forgetting of Agent Memory</a>
+                </div>
+                <div class="card-byline">Yingjie Gu, Bo Xiong, Yijuan Guo, Chao Li, Xiaojing Zhang</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  提出受生物学启发的代理记忆选择性遗忘框架，提升资源受限环境下的效率
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2604.20300v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2604.20300v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>FSFM框架受人类认知过程启发，针对LLM代理的记忆管理问题。核心创新在于提出选择性遗忘机制，借鉴海马体索引/整合理论和艾宾浩斯遗忘曲线。与聚焦于记忆保留的研究相反，该框架强调在资源受限环境中精心设计的遗忘机制与记忆同样重要，为代理的效率和安全性提供新的优化方向。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">Skill Learning</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 56</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/69e8cecb000000000b010a9a?xsec_token=ABAHyYz5DpHUmf0IPBNLSfpDzzMx6cPmx3BVx2P8t-PIQ=&amp;xsec_source=pc_search" target="_blank">为什么因果强化学习那么重要</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/69e8cecb000000000b010a9a?xsec_token=ABAHyYz5DpHUmf0IPBNLSfpDzzMx6cPmx3BVx2P8t-PIQ=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">Agent</span>
+                    
+                    <span class="tag">Skill</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-04-22</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2604.20572v1" target="_blank">Ask Only When Needed: Proactive Retrieval from Memory and Skills for Experience-Driven Lifelong Agents</a>
+                </div>
+                <div class="card-byline">Yuxuan Cai, Jie Zhou, Qin Chen, Liang He</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  提出经验驱动终身代理的主动检索机制，按需从记忆和技能中获取知识
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2604.20572v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2604.20572v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>针对现有方法被动检索的局限，提出主动检索框架，使代理能在交互过程中主动识别知识缺口并按需获取。核心创新在于超越任务初始化或步骤完成后的触发模式，实现交互中的动态知识获取。结合记忆和技能两个维度的检索，提升终身代理在长时域任务上的持续学习和适应能力。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">Skill Retrieval</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 29</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/69e89ce0000000001d01bbc2?xsec_token=ABAHyYz5DpHUmf0IPBNLSfpB-_6dkmL3ErFH05iXUzeSw=&amp;xsec_source=pc_search" target="_blank">低成本可扩展的 4B Deep Research Agent</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/69e89ce0000000001d01bbc2?xsec_token=ABAHyYz5DpHUmf0IPBNLSfpB-_6dkmL3ErFH05iXUzeSw=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">Agent</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-04-22</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2604.20651v1" target="_blank">CHORUS: An Agentic Framework for Generating Realistic Deliberation Data</a>
+                </div>
+                <div class="card-byline">A. Koursaris, G. Domalis, A. Apostolopoulou, K. Kanaris, D. Tsakalidis</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  提出Chorus代理框架，利用行为一致角色编排生成逼真的协商数据
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2604.20651v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2604.20651v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>Chorus是一个代理框架，通过协调具有行为一致性的LLM驱动角色来生成大规模协商数据。核心创新在于解决在线话语数据稀缺问题，通过角色扮演生成多样化、高质量的协商数据。框架支持交互式网络平台的协商动态研究，为社交AI和话语分析提供数据支撑。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">LLM Agent</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 27</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/69e983ef000000002003bc81?xsec_token=AB7Ru5A275BL6Iq4egWM-y5E717fhzqe-9FKo-Cr25Vg0=&amp;xsec_source=pc_search" target="_blank">Agent和具身，选哪个方向</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/69e983ef000000002003bc81?xsec_token=AB7Ru5A275BL6Iq4egWM-y5E717fhzqe-9FKo-Cr25Vg0=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">Agent</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-04-22</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2604.20714v1" target="_blank">Learning to Evolve: A Self-Improving Framework for Multi-Agent Systems via Textual Parameter Graph Optimization</a>
+                </div>
+                <div class="card-byline">Shan He, Runze Wang, Zhuoyun Du, Huiyu Bai, Zouying Cao</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  提出多代理系统的自改进框架，通过文本参数图优化实现代理工程的自动化
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2604.20714v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2604.20714v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>该论文针对多代理系统设计和优化的复杂性，提出基于文本参数图优化的自改进框架。核心创新在于突破传统扁平化提示调优的局限，通过结构化感知理解代理交互网络，并让优化器从经验中学习改进策略。实验验证了框架在提升代理系统性能和自适应优化能力方面的有效性。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">Agent</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 26</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/69e9224c000000001d01cd3d?xsec_token=AB7Ru5A275BL6Iq4egWM-y5I9m-mqZt9vrr2XcqXBbuZY=&amp;xsec_source=pc_search" target="_blank">Openai发布新功能工作空间智能体</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/69e9224c000000001d01cd3d?xsec_token=AB7Ru5A275BL6Iq4egWM-y5I9m-mqZt9vrr2XcqXBbuZY=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">Agent</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-04-22</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2604.20727v1" target="_blank">Supplement Generation Training for Enhancing Agentic Task Performance</a>
+                </div>
+                <div class="card-byline">Young Min Cho, Daniele Bonadiman, Divya Bhargavi, Tamer Alkhouli, Salvatore Romeo</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  提出补充生成训练策略，通过训练小型LLM生成任务特定补充模块来提升代理性能
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2604.20727v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2604.20727v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>针对代理任务训练的计算成本高、迭代周期长问题，提出补充生成训练（SGT）方法。核心创新在于训练小型LLM为特定任务或领域生成补充模块，而非对大规模基础模型进行后训练。实验表明该策略能显著降低计算成本，同时保持任务适应性能，为代理能力的可持续扩展提供高效路径。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">Skill</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 26</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/69e89109000000001e00c94a?xsec_token=ABAHyYz5DpHUmf0IPBNLSfpHZGKswH-zgtwqSRi0iDOOA=&amp;xsec_source=pc_search" target="_blank">实习生困境</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/69e89109000000001e00c94a?xsec_token=ABAHyYz5DpHUmf0IPBNLSfpHZGKswH-zgtwqSRi0iDOOA=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+    
+  </table>
+
+  <!-- Footer -->
+  <div class="footer">
+    由 <strong>arxiv-daily</strong> 自动生成 · 每天 12:00 推送<br>
+    <a href="https://github.com/yzbcs/Arxiv-Daily-Digest">GitHub</a>
+  </div>
+
+</div>
+</body>
+</html>
