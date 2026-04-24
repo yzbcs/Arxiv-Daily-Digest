@@ -7,8 +7,10 @@ __pycache__/
 *.egg-info/
 .venv/
 
-# 预览文件
+# 预览文件及运行产物
 preview.html
+preview_*.html
+📄_*.html
 
 # macOS
 .DS_Store
