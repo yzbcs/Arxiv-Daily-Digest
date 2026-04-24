@@ -1,10 +1,12 @@
 # 📬 每日推送助手
 
 <p align="center">
-  <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/Python-3.10+-blue?logo=python" alt="Python" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green" alt="License" /></a>
-  <a href="#-supported-llm-providers"><img src="https://img.shields.io/badge/LLM-MiniMax%20%7C%20Claude%20%7C%20OpenAI-orange" alt="LLM" /></a>
-  <a href="https://github.com/yzbcs/Daily-Digest-Assistant/actions"><img src="https://img.shields.io/badge/Deploy-GitHub%20Actions-black?logo=github" alt="Deploy" /></a>
+  <a href="https://github.com/yzbcs/Daily-Digest-Assistant/stargazers"><img src="https://img.shields.io/github/stars/yzbcs/Daily-Digest-Assistant?style=flat-square&logo=github&color=yellow" alt="Stars" /></a>
+  <a href="https://github.com/yzbcs/Daily-Digest-Assistant/network/members"><img src="https://img.shields.io/github/forks/yzbcs/Daily-Digest-Assistant?style=flat-square&logo=github&color=blue" alt="Forks" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License" /></a>
+  <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/Python-3.11-blue?style=flat-square&logo=python" alt="Python" /></a>
+  <a href="https://github.com/yzbcs/Daily-Digest-Assistant/actions"><img src="https://img.shields.io/github/actions/workflow/status/yzbcs/Daily-Digest-Assistant/daily.yml?style=flat-square&logo=github-actions&label=Actions" alt="Actions" /></a>
+  <a href="#-supported-llm-providers"><img src="https://img.shields.io/badge/LLM-MiniMax%20%7C%20Claude%20%7C%20OpenAI-orange?style=flat-square" alt="LLM" /></a>
 </p>
 
 <p align="center">
