@@ -46,7 +46,7 @@ smtp_provider: "163"
 # 内置可选：minimax / claude / openai / deepseek / zhipu / moonshot / qwen
 # 也可填自定义名称（需在下方 custom_llm 中定义）
 # 对应 API Key 填写到 GitHub Secrets 的 LLM_API_KEY
-llm_provider: my_api
+llm_provider: minimax
 
 # ── 自定义 LLM 提供商（可选）────────────────────────────────
 # 当你使用的 API 不在内置列表中时，在此配置。
