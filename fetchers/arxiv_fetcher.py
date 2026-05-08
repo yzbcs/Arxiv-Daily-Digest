@@ -5,6 +5,7 @@ arxiv_fetcher.py — arXiv 论文搜索
 时间窗口由 arxiv_schedule.py 计算（按 arXiv 官方公告批次对齐）。
 """
 
+import time
 import arxiv
 from datetime import datetime, timezone, timedelta
 
@@ -34,7 +35,7 @@ def fetch_papers(keywords: list[str], categories: list[str], candidate_pool: int
     if start_time is None:
         start_time = end_time - timedelta(hours=24)
 
-    client = arxiv.Client(num_retries=3, delay_seconds=3)
+    client = arxiv.Client(num_retries=5, delay_seconds=10)
     search = arxiv.Search(
         query=query,
         max_results=candidate_pool * 2,  # 多取一些，过滤后仍能满足数量
@@ -42,44 +43,60 @@ def fetch_papers(keywords: list[str], categories: list[str], candidate_pool: int
         sort_order=arxiv.SortOrder.Descending,
     )
 
-    papers = []
-    seen_ids = set()
+    # arXiv API 429 限流重试：最多 5 次，间隔递增
+    max_attempts = 5
+    wait_times = [30, 60, 120, 180, 300]
 
-    for result in client.results(search):
-        pub_time = result.published
-        if pub_time.tzinfo is None:
-            pub_time = pub_time.replace(tzinfo=timezone.utc)
-        if pub_time < start_time:
-            break
-        if pub_time > end_time:
-            continue
+    for attempt in range(max_attempts):
+        try:
+            papers = []
+            seen_ids = set()
 
-        paper_id = result.entry_id.split("/abs/")[-1]
-        paper_id = paper_id.split("v")[0]
+            for result in client.results(search):
+                pub_time = result.published
+                if pub_time.tzinfo is None:
+                    pub_time = pub_time.replace(tzinfo=timezone.utc)
+                if pub_time < start_time:
+                    break
+                if pub_time > end_time:
+                    continue
 
-        if paper_id in seen_ids:
-            continue
-        seen_ids.add(paper_id)
+                paper_id = result.entry_id.split("/abs/")[-1]
+                paper_id = paper_id.split("v")[0]
 
-        text = (result.title + " " + result.summary).lower()
-        matched = [kw for kw in keywords if kw.lower() in text]
+                if paper_id in seen_ids:
+                    continue
+                seen_ids.add(paper_id)
 
-        papers.append({
-            "id": paper_id,
-            "title": _clean_latex(result.title),
-            "authors": [a.name for a in result.authors[:5]],
-            "abstract": result.summary.replace("\n", " ").strip(),
-            "url": result.entry_id,
-            "pdf_url": result.pdf_url,
-            "published": result.published.strftime("%Y-%m-%d"),
-            "categories": list(result.categories) if hasattr(result, "categories") else [],
-            "matched_keywords": matched,
-        })
+                text = (result.title + " " + result.summary).lower()
+                matched = [kw for kw in keywords if kw.lower() in text]
 
-        if len(papers) >= candidate_pool:
-            break
+                papers.append({
+                    "id": paper_id,
+                    "title": _clean_latex(result.title),
+                    "authors": [a.name for a in result.authors[:5]],
+                    "abstract": result.summary.replace("\n", " ").strip(),
+                    "url": result.entry_id,
+                    "pdf_url": result.pdf_url,
+                    "published": result.published.strftime("%Y-%m-%d"),
+                    "categories": list(result.categories) if hasattr(result, "categories") else [],
+                    "matched_keywords": matched,
+                })
 
-    return papers
+                if len(papers) >= candidate_pool:
+                    break
+
+            return papers
+
+        except arxiv.HTTPError as e:
+            if e.status_code == 429 and attempt < max_attempts - 1:
+                wait = wait_times[attempt]
+                print(f"[arxiv] 429 限流，等待 {wait}s 后重试（{attempt + 1}/{max_attempts}）...")
+                time.sleep(wait)
+            else:
+                raise
+
+    return []
 
 
 def _clean_latex(text: str) -> str:
