@@ -89,7 +89,7 @@ def fetch_papers(keywords: list[str], categories: list[str], candidate_pool: int
             return papers
 
         except arxiv.HTTPError as e:
-            if e.status_code == 429 and attempt < max_attempts - 1:
+            if e.status == 429 and attempt < max_attempts - 1:
                 wait = wait_times[attempt]
                 print(f"[arxiv] 429 限流，等待 {wait}s 后重试（{attempt + 1}/{max_attempts}）...")
                 time.sleep(wait)
