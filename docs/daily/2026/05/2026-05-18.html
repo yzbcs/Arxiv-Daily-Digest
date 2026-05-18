@@ -78,7 +78,7 @@ details summary:hover { background: #eef2ff; }
     <div class="meta">2026年05月18日 · 星期一</div>
     <div class="pills">
       
-      <div class="pill">📄 arXiv <b>9</b> 篇</div>
+      <div class="pill">📄 arXiv <b>10</b> 篇</div>
       
       
       <div class="pill">📕 小红书 <b>10</b> 条</div>
@@ -132,7 +132,7 @@ details summary:hover { background: #eef2ff; }
                 
                 <div class="summary">
                   <span class="label">💡 一句话总结</span>
-                  提出混合结构记忆机制H-Mem，解决Agent记忆随时间演化和有效检索的核心难题。
+                  提出混合结构记忆机制，动态演化和检索LLM Agent记忆，集成OpenClaw等系统实践
                 </div>
                 
                 <div class="card-links">
@@ -145,7 +145,7 @@ details summary:hover { background: #eef2ff; }
               
               <details>
                 <summary>📋 详细解读</summary>
-                <div class="detail-body"><span class="detail-label">论文解读</span>论文研究了LLM Agent记忆数据的演化和检索问题。提出了H-Mem混合结构记忆机制，创新性地结合层次化记忆结构和动态演化模型，实现记忆的有效管理。核心创新在于提出记忆数据随时间变化的建模方法，解决了现有系统在记忆演化和检索方面的不足。实验表明该方法在问答任务上显著优于现有记忆系统。论文直接涉及OpenClaw等知名Agent系统，具有重要参考价值。</div>
+                <div class="detail-body"><span class="detail-label">论文解读</span>研究如何有效建模和检索LLM Agent的memory data，提出混合结构记忆框架支持记忆的动态演化。核心创新在于提出原则性机制捕捉记忆随时间的演变，并设计有效检索方法解决记忆检索难题。实验表明该方法在需要记忆的QA任务上显著提升性能，明确集成OpenClaw等系统的记忆实践，为Agent记忆管理提供新范式。</div>
               </details>
               
             </div>
@@ -165,20 +165,97 @@ details summary:hover { background: #eef2ff; }
                     
                   </div>
                   
-                  <span class="card-date" style="color:#FF2442;">❤️ 39</span>
+                  <span class="card-date" style="color:#FF2442;">❤️ 13</span>
                   
                 </div>
                 <div class="card-title">
-                  <a href="https://www.xiaohongshu.com/explore/6a09d226000000003701c726?xsec_token=ABIOzuEchmKjyjwyUk1ax7UsWWO9h_K8mObRUzLQ2Yuoc=&amp;xsec_source=pc_search" target="_blank">LongCat Skill0：将Skills内化到模型参数</a>
+                  <a href="https://www.xiaohongshu.com/explore/6a080dc60000000038035da3?xsec_token=ABiVa9B1nbNM3uyCnDZwvntquofGEuU0Uwvvrzq5hzz4A=&amp;xsec_source=pc_search" target="_blank">MemSkill：Agent的 “可进化记忆” 框架</a>
                 </div>
                 
                 <div class="summary-xhs">
                   <span class="label">💡 内容总结</span>
-                  SKILL0方案通过ICRL和推理时无skill的方式，将技能行为策略内化到模型参数中
+                  MemSkill将记忆操作转化为可学习可进化的记忆技能，实现Agent记忆管理从固定工具到动态能力的升级。
                 </div>
                 
                 <div class="card-links">
-                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a09d226000000003701c726?xsec_token=ABIOzuEchmKjyjwyUk1ax7UsWWO9h_K8mObRUzLQ2Yuoc=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a080dc60000000038035da3?xsec_token=ABiVa9B1nbNM3uyCnDZwvntquofGEuU0Uwvvrzq5hzz4A=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">LLM Agent</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-05-15</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2605.15871v1" target="_blank">Agentic Discovery of Neural Architectures: AIRA-Compose and AIRA-Design</a>
+                </div>
+                <div class="card-byline">Alberto Pepe, Chien-Yu Lin, Despoina Magka, Bilge Acun, Yannan Nellie Wu</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  提出双框架AIRA，让LLM Agent递归自改进、自主设计神经网络架构
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.15871v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.15871v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>研究LLM Agent能否递归自我改进、自主设计超越标准Transformer的基础模型。提出双框架方法：AIRA-Compose用于高层架构搜索，AIRA-Design用于底层机制实现。核心创新在于实现Agent的递归自我改进能力，让11个Agent在24小时预算内自主探索计算原语，评估架构的效率和性能。为自动化机器学习和Agent自主进化开辟新途径。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">skill learning</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 67</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/6a09ccb80000000007013d60?xsec_token=ABIOzuEchmKjyjwyUk1ax7Uu1AaKb6lPIEOeLRaZ1E_hg=&amp;xsec_source=pc_search" target="_blank">开源Skill：让顶级AI私教带你学任何知识</a>
+                </div>
+                
+                <div class="summary-xhs">
+                  <span class="label">💡 内容总结</span>
+                  开源项目learn-anything-with-AI，打造导师式学习Skill，先判断用户目标和基础再制定学习计划。
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a09ccb80000000007013d60?xsec_token=ABIOzuEchmKjyjwyUk1ax7Uu1AaKb6lPIEOeLRaZ1E_hg=&amp;xsec_source=pc_search" target="_blank">小红书</a>
                 </div>
               </div>
             </div>
@@ -209,7 +286,7 @@ details summary:hover { background: #eef2ff; }
                 
                 <div class="summary">
                   <span class="label">💡 一句话总结</span>
-                  FORGE实现LLM Agent无需梯度更新即可通过种群广播实现记忆自我进化。
+                  提出FORGE协议，通过群体广播实现LLM Agent无梯度更新的自演化记忆
                 </div>
                 
                 <div class="card-links">
@@ -222,7 +299,236 @@ details summary:hover { background: #eef2ff; }
               
               <details>
                 <summary>📋 详细解读</summary>
-                <div class="detail-body"><span class="detail-label">论文解读</span>论文探讨了LLM Agent如何通过自生成记忆改进决策，且无需梯度更新。提出FORGE（失败优化反思毕业与进化）协议，采用基于种群的阶段性方法演化提示注入的自然语言记忆。核心创新在于 Reflexion 风格的内部循环结合种群广播策略，实现分层 ReAct Agent 的记忆进化。实验证明该方法能有效提升 Agent 在复杂任务中的决策能力，为 Agent 自我进化提供了新思路。</div>
+                <div class="detail-body"><span class="detail-label">论文解读</span>研究LLM Agent能否通过自生成记忆改进决策而不进行梯度更新，提出FORGE（失败优化反思毕业与演化）协议——分阶段、基于群体的协议，通过种群广播进化提示注入的自然语言记忆。核心创新在于包装Reflexion风格内循环，让专用反思Agent在同一底层LLM下运作，实现无需权重更新的自我演化。实验验证该方法在多任务场景下显著提升决策质量和适应性。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">skill learning</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 39</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/6a09d226000000003701c726?xsec_token=ABIOzuEchmKjyjwyUk1ax7UsWWO9h_K8mObRUzLQ2Yuoc=&amp;xsec_source=pc_search" target="_blank">LongCat Skill0：将Skills内化到模型参数</a>
+                </div>
+                
+                <div class="summary-xhs">
+                  <span class="label">💡 内容总结</span>
+                  SKILL0提出训练时使用skill、推理时不使用的内化方法，让模型把技能对应的行为策略固化到参数中。
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a09d226000000003701c726?xsec_token=ABIOzuEchmKjyjwyUk1ax7UsWWO9h_K8mObRUzLQ2Yuoc=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">LLM Agent</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-05-15</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2605.16045v1" target="_blank">RecMem: Recurrence-based Memory Consolidation for Efficient and Effective Long-Running LLM Agents</a>
+                </div>
+                <div class="card-byline">Zijie Dai, Shiyuan Deng, Sheng Guan, Yizhou Tian, Xin Yao</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  提出基于递归的记忆整合机制RecMem，降低长时运行LLM Agent的令牌消耗
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.16045v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.16045v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>针对现有记忆系统在每次交互时调用LLM处理导致大量令牌消耗的问题，提出RecMem——基于递归的记忆整合机制。核心创新在于采用递归式记忆整合，避免对每次交互进行完整LLM处理，在保持记忆质量的同时显著降低计算成本。实验表明该方法能在长对话中大幅减少令牌使用量，同时保持或提升任务性能，为资源受限场景提供高效方案。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">openclaw</span>
+                    
+                  </div>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/6a02dfb9000000003502d3a4?xsec_token=ABJQxzdXf4-o9kErKYJMd4UpmhXnILTveZ_jv0tMzxKFg=&amp;xsec_source=pc_search" target="_blank">用OpenClaw搭建可靠的AI Agent</a>
+                </div>
+                
+                <div class="summary-xhs">
+                  <span class="label">💡 内容总结</span>
+                  图文详解OpenClaw三层架构、七阶段Agent循环和六项安全加固配置，附ClawHavoc安全事件警示。
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a02dfb9000000003502d3a4?xsec_token=ABJQxzdXf4-o9kErKYJMd4UpmhXnILTveZ_jv0tMzxKFg=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">LLM Agent</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-05-15</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2605.16143v1" target="_blank">Look Before You Leap: Autonomous Exploration for LLM Agents</a>
+                </div>
+                <div class="card-byline">Ziang Ye, Wentao Shi, Yuxin Liu, Yu Wang, Zhengzhou Cai</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  识别LLM Agent过早开发问题，提出自主探索能力及评估指标
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.16143v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.16143v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>识别LLM Agent在陌生环境中常因过早开发（利用先验知识前未获取足够环境信息）而失败的问题。提出探索检查点覆盖率（Exploration Checkpoint Coverage）来形式化和量化自主探索能力。核心创新在于定义和评估LLM Agent的自主探索能力，为构建更鲁棒的Agent系统提供理论基础。实验验证该指标能有效区分不同Agent的探索策略优劣。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">skill retrieval</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 169</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/6a09e5da0000000036033adf?xsec_token=ABIOzuEchmKjyjwyUk1ax7UjWCF3jS4aX4OWoOlK9WfNM=&amp;xsec_source=pc_search" target="_blank">🎮 Continual Harness：实现Agent自进化</a>
+                </div>
+                
+                <div class="summary-xhs">
+                  <span class="label">💡 内容总结</span>
+                  介绍Continual Harness框架，实现Agent无重置的自我改进，从交互中持续学习而非依赖人工迭代prompt。
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a09e5da0000000036033adf?xsec_token=ABIOzuEchmKjyjwyUk1ax7UjWCF3jS4aX4OWoOlK9WfNM=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">LLM Agent</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-05-15</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2605.16205v1" target="_blank">Context, Reasoning, and Hierarchy: A Cost-Performance Study of Compound LLM Agent Design in an Adversarial POMDP</a>
+                </div>
+                <div class="card-byline">Igor Bogdanov, Chung-Horng Lung, Thomas Kunz, Jie Gao, Adrian Taylor</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  成本-性能权衡研究复合LLM Agent设计，评估其在对抗性POMDP环境中的表现
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.16205v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.16205v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>研究在对抗性部分可观测的顺序环境中部署复合LLM Agent的设计维度：Agent看到什么、如何推理、如何分解任务。核心创新在于系统性地评估compound LLM agent设计空间，揭示哪些设计选择真正提升性能vs仅增加推理成本。实验揭示不同设计选择对性能和成本的精确影响规律，为实践者提供明确的部署指南。</div>
               </details>
               
             </div>
@@ -242,15 +548,97 @@ details summary:hover { background: #eef2ff; }
                     
                   </div>
                   
-                  <span class="card-date" style="color:#FF2442;">❤️ 2148</span>
+                  <span class="card-date" style="color:#FF2442;">❤️ 2171</span>
                   
                 </div>
                 <div class="card-title">
                   <a href="https://www.xiaohongshu.com/explore/6a09b0a3000000000602250c?xsec_token=ABIOzuEchmKjyjwyUk1ax7UuoUNHPKuZWa5zkvkPJzfYI=&amp;xsec_source=pc_search" target="_blank">这个 skill 可以帮你找到实习！</a>
                 </div>
                 
+                <div class="summary-xhs">
+                  <span class="label">💡 内容总结</span>
+                  介绍实习妙妙工具(SIT)，AI驱动的skill帮助候选人根据JD快速补齐项目经验，覆盖多个技术方向。
+                </div>
+                
                 <div class="card-links">
                   <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a09b0a3000000000602250c?xsec_token=ABIOzuEchmKjyjwyUk1ax7UuoUNHPKuZWa5zkvkPJzfYI=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">LLM Agent</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-05-14</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2605.15338v1" target="_blank">Hidden in Memory: Sleeper Memory Poisoning in LLM Agents</a>
+                </div>
+                <div class="card-byline">Sidharth Pulipaka, Stanislau Hlebik, Leonidas Raghav, Sahar Abdelnabi, Vyas Raina</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  研究LLM Agent记忆持久化安全风险，提出睡美人记忆中毒攻击方式
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.15338v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.15338v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>研究LLM Assistant持久记忆引入的新安全风险：对抗性内容可污染记忆并影响未来交互。提出并研究睡美人记忆中毒——一种延迟攻击方式。核心创新在于揭示基于记忆的Agent系统中的新型攻击面，为安全设计提供警示。实验展示攻击如何通过污染记忆影响Agent后续行为，分析攻击效果和条件，为防御策略提供基础。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">skill evolution</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 153</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/6a09a61b0000000006031629?xsec_token=ABIOzuEchmKjyjwyUk1ax7UjYjIXSdI8tHJHEL794qvfk=&amp;xsec_source=pc_search" target="_blank">2026.5最新Agent学习路线</a>
+                </div>
+                
+                <div class="summary-xhs">
+                  <span class="label">💡 内容总结</span>
+                  分享Agent Learning Hub学习路线，涵盖从基础Agent Loop到OpenClaw、Hermes等现代框架的系统学习资源。
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a09a61b0000000006031629?xsec_token=ABIOzuEchmKjyjwyUk1ax7UjYjIXSdI8tHJHEL794qvfk=&amp;xsec_source=pc_search" target="_blank">小红书</a>
                 </div>
               </div>
             </div>
@@ -281,7 +669,7 @@ details summary:hover { background: #eef2ff; }
                 
                 <div class="summary">
                   <span class="label">💡 一句话总结</span>
-                  ColPackAgent通过Agent-Skill引导的MCP协议实现胶体堆积蒙特卡洛模拟自动化。
+                  提出Agent技能引导的ColPackAgent框架，自主运行胶体堆积蒙特卡洛模拟
                 </div>
                 
                 <div class="card-links">
@@ -294,7 +682,84 @@ details summary:hover { background: #eef2ff; }
               
               <details>
                 <summary>📋 详细解读</summary>
-                <div class="detail-body"><span class="detail-label">论文解读</span>论文提出ColPackAgent框架，通过Model Context Protocol（MCP）工具服务器和Agent Skill实现蒙特卡洛模拟自动化。核心创新在于将Agent Skill与MCP协议结合，使Agent能够自主执行复杂的胶体堆积模拟工作流。该框架可作为独立Agent或集成到现有Agent系统中，展示了技能引导在科学模拟中的应用潜力。实验验证了框架的有效性，为Agent Skill的实际应用提供了典型案例。</div>
+                <div class="detail-body"><span class="detail-label">论文解读</span>介绍ColPackAgent——通过模型上下文协议（MCP）工具服务器和Agent技能自主运行胶体堆积蒙特卡洛模拟的Agent框架。支持独立Agent或集成到现有Agent系统中执行结构化模拟工作流。核心创新在于将Agent技能与标准化工具协议结合，实现科学模拟的自动化。实验验证该框架能有效自主完成胶体堆积模拟任务，为科学领域的Agent应用提供参考。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">skill refinement</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 3</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/6a0978c5000000003700c3e8?xsec_token=ABIOzuEchmKjyjwyUk1ax7UtP7h05R2hP8g1aR_wgnHyk=&amp;xsec_source=pc_search" target="_blank">用WorkBuddy自定义skill开发系统</a>
+                </div>
+                
+                <div class="summary-xhs">
+                  <span class="label">💡 内容总结</span>
+                  用WorkBuddy自定义skill开发系统，加载software-dev-team skill，20分钟完成33个文件的全流程开发。
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a0978c5000000003700c3e8?xsec_token=ABIOzuEchmKjyjwyUk1ax7UtP7h05R2hP8g1aR_wgnHyk=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">LLM Agent</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-05-15</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2605.15759v1" target="_blank">DimMem: Dimensional Structuring for Efficient Long-Term Agent Memory</a>
+                </div>
+                <div class="card-byline">Wentao Qiu, Haotian Hu, Fanyi Wang, Jinwei Kong, Yu Zhang</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  提出维度记忆框架DimMem，在保真度和效率之间平衡LLM Agent的长期记忆
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.15759v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.15759v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>针对LLM Agent长期记忆面临的保真度-效率权衡问题：原始对话历史成本高，而扁平事实或摘要可能丢失精确回忆所需结构。提出DimMem——轻量级维度记忆框架，用维度表示每个记忆单元。核心创新在于通过维度结构化记忆，在保持回忆精度的同时降低存储和检索成本。实验表明该方法在多轮交互任务中优于现有记忆系统。</div>
               </details>
               
             </div>
@@ -314,7 +779,7 @@ details summary:hover { background: #eef2ff; }
                     
                   </div>
                   
-                  <span class="card-date" style="color:#FF2442;">❤️ 149</span>
+                  <span class="card-date" style="color:#FF2442;">❤️ 150</span>
                   
                 </div>
                 <div class="card-title">
@@ -347,26 +812,26 @@ details summary:hover { background: #eef2ff; }
                   <span class="card-date">2026-05-15</span>
                 </div>
                 <div class="card-title">
-                  <a href="http://arxiv.org/abs/2605.16045v1" target="_blank">RecMem: Recurrence-based Memory Consolidation for Efficient and Effective Long-Running LLM Agents</a>
+                  <a href="http://arxiv.org/abs/2605.16194v1" target="_blank">paper.json: A Coordination Convention for LLM-Agent-Actionable Papers</a>
                 </div>
-                <div class="card-byline">Zijie Dai, Shiyuan Deng, Sheng Guan, Yizhou Tian, Xin Yao</div>
+                <div class="card-byline">Arquimedes Canedo</div>
                 
                 <div class="summary">
                   <span class="label">💡 一句话总结</span>
-                  RecMem提出基于递归的记忆整合方案，显著降低长期运行LLM Agent的令牌消耗。
+                  提出paper.json格式规范，使学术论文更易于LLM Agent理解和处理
                 </div>
                 
                 <div class="card-links">
-                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.16045v1" target="_blank">arXiv</a>
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.16194v1" target="_blank">arXiv</a>
                   
-                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.16045v1" target="_blank">PDF</a>
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.16194v1" target="_blank">PDF</a>
                   
                 </div>
               </div>
               
               <details>
                 <summary>📋 详细解读</summary>
-                <div class="detail-body"><span class="detail-label">论文解读</span>论文聚焦长期运行LLM Agent的内存效率问题。当前记忆系统对每次交互都调用LLM进行记忆提取，导致大量令牌消耗。提出RecMem递归记忆整合方法，通过 recurrence 机制实现更高效的记忆压缩和整合。核心创新是避免了逐次调用LLM处理交互，而是在积累一定信息后批量整合。实验结果显示令牌消耗大幅降低，同时保持了记忆检索的有效性，对构建高效长期Agent系统具有重要意义。</div>
+                <div class="detail-body"><span class="detail-label">论文解读</span>研究LLM Agent作为论文第一读者时的常见失败问题：子声明无法细粒度引用、范围过度扩展、图表命令埋在代码库等。提出paper.json格式约定，使论文更易于LLM Agent可操作。核心创新在于为学术论文设计机器友好格式，提升Agent提取可重现步骤和泛化范围的能力。实验验证新格式能显著减少LLM Agent处理学术文献时的错误。</div>
               </details>
               
             </div>
@@ -395,403 +860,6 @@ details summary:hover { background: #eef2ff; }
                 
                 <div class="card-links">
                   <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a09c199000000003503a7ae?xsec_token=ABIOzuEchmKjyjwyUk1ax7UqidyygnRrlbRKOOxr8wrxM=&amp;xsec_source=pc_search" target="_blank">小红书</a>
-                </div>
-              </div>
-            </div>
-          
-        </td>
-      </tr>
-      
-      <tr class="card-row">
-        <!-- 左栏：arXiv -->
-        <td>
-          
-            
-            <div class="card">
-              <div class="card-inner">
-                <div class="card-top">
-                  <div class="card-tags">
-                    
-                    <span class="tag">LLM Agent</span>
-                    
-                    
-                  </div>
-                  <span class="card-date">2026-05-15</span>
-                </div>
-                <div class="card-title">
-                  <a href="http://arxiv.org/abs/2605.15759v1" target="_blank">DimMem: Dimensional Structuring for Efficient Long-Term Agent Memory</a>
-                </div>
-                <div class="card-byline">Wentao Qiu, Haotian Hu, Fanyi Wang, Jinwei Kong, Yu Zhang</div>
-                
-                <div class="summary">
-                  <span class="label">💡 一句话总结</span>
-                  DimMem通过维度结构化方法解决LLM Agent长期记忆的保真度与效率权衡问题。
-                </div>
-                
-                <div class="card-links">
-                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.15759v1" target="_blank">arXiv</a>
-                  
-                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.15759v1" target="_blank">PDF</a>
-                  
-                </div>
-              </div>
-              
-              <details>
-                <summary>📋 详细解读</summary>
-                <div class="detail-body"><span class="detail-label">论文解读</span>论文针对LLM Agent长期记忆面临的保真度-效率权衡问题提出了DimMem维度记忆框架。核心创新在于将记忆表示为轻量级维度结构，平衡原始对话历史和扁平化摘要各自的优缺点。该框架为每个记忆单元建立多维度表示，既保留结构信息又降低存储和检索开销。实验表明DimMem在保持记忆精度的同时显著提升效率，对长期运行Agent的实用部署有重要参考价值。</div>
-              </details>
-              
-            </div>
-          
-        </td>
-
-        <!-- 右栏：小红书 -->
-        <td>
-          
-            
-            <div class="card">
-              <div class="card-inner">
-                <div class="card-top">
-                  <div class="card-tags">
-                    
-                    <span class="tag">skill learning</span>
-                    
-                  </div>
-                  
-                  <span class="card-date" style="color:#FF2442;">❤️ 66</span>
-                  
-                </div>
-                <div class="card-title">
-                  <a href="https://www.xiaohongshu.com/explore/6a09ccb80000000007013d60?xsec_token=ABIOzuEchmKjyjwyUk1ax7Uu1AaKb6lPIEOeLRaZ1E_hg=&amp;xsec_source=pc_search" target="_blank">开源Skill：让顶级AI私教带你学任何知识</a>
-                </div>
-                
-                <div class="card-links">
-                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a09ccb80000000007013d60?xsec_token=ABIOzuEchmKjyjwyUk1ax7Uu1AaKb6lPIEOeLRaZ1E_hg=&amp;xsec_source=pc_search" target="_blank">小红书</a>
-                </div>
-              </div>
-            </div>
-          
-        </td>
-      </tr>
-      
-      <tr class="card-row">
-        <!-- 左栏：arXiv -->
-        <td>
-          
-            
-            <div class="card">
-              <div class="card-inner">
-                <div class="card-top">
-                  <div class="card-tags">
-                    
-                    <span class="tag">LLM Agent</span>
-                    
-                    
-                  </div>
-                  <span class="card-date">2026-05-15</span>
-                </div>
-                <div class="card-title">
-                  <a href="http://arxiv.org/abs/2605.15871v1" target="_blank">Agentic Discovery of Neural Architectures: AIRA-Compose and AIRA-Design</a>
-                </div>
-                <div class="card-byline">Alberto Pepe, Chien-Yu Lin, Despoina Magka, Bilge Acun, Yannan Nellie Wu</div>
-                
-                <div class="summary">
-                  <span class="label">💡 一句话总结</span>
-                  AIRA双框架实现LLM Agent自主设计超越标准Transformer的神经网络架构。
-                </div>
-                
-                <div class="card-links">
-                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.15871v1" target="_blank">arXiv</a>
-                  
-                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.15871v1" target="_blank">PDF</a>
-                  
-                </div>
-              </div>
-              
-              <details>
-                <summary>📋 详细解读</summary>
-                <div class="detail-body"><span class="detail-label">论文解读</span>论文探索LLM Agent自主设计神经网络架构的可能性，提出AIRA-Compose和AIRA-Design双框架。核心创新在于将架构搜索任务分解为高层搜索和底层实现，由11个Agent协同完成。AIRA-Compose在24小时预算内探索基本计算原语，AIRA-Design负责具体机制实现。该研究为Agent的递归自我改进能力提供了实证，展示了LLM Agent在科学发现领域的潜力。</div>
-              </details>
-              
-            </div>
-          
-        </td>
-
-        <!-- 右栏：小红书 -->
-        <td>
-          
-            
-            <div class="card">
-              <div class="card-inner">
-                <div class="card-top">
-                  <div class="card-tags">
-                    
-                    <span class="tag">LLM Agent</span>
-                    
-                  </div>
-                  
-                  <span class="card-date" style="color:#FF2442;">❤️ 64</span>
-                  
-                </div>
-                <div class="card-title">
-                  <a href="https://www.xiaohongshu.com/explore/6a0a8041000000000f03ac01?xsec_token=ABDTvNS7HK5l5Ayhw1lcsWcS-Vo2Y85FgqKacRQt_h6zI=&amp;xsec_source=pc_search" target="_blank">ICML 2026 Spotlight/Oral</a>
-                </div>
-                
-                <div class="card-links">
-                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a0a8041000000000f03ac01?xsec_token=ABDTvNS7HK5l5Ayhw1lcsWcS-Vo2Y85FgqKacRQt_h6zI=&amp;xsec_source=pc_search" target="_blank">小红书</a>
-                </div>
-              </div>
-            </div>
-          
-        </td>
-      </tr>
-      
-      <tr class="card-row">
-        <!-- 左栏：arXiv -->
-        <td>
-          
-            
-            <div class="card">
-              <div class="card-inner">
-                <div class="card-top">
-                  <div class="card-tags">
-                    
-                    <span class="tag">LLM Agent</span>
-                    
-                    
-                  </div>
-                  <span class="card-date">2026-05-15</span>
-                </div>
-                <div class="card-title">
-                  <a href="http://arxiv.org/abs/2605.16143v1" target="_blank">Look Before You Leap: Autonomous Exploration for LLM Agents</a>
-                </div>
-                <div class="card-byline">Ziang Ye, Wentao Shi, Yuxin Liu, Yu Wang, Zhengzhou Cai</div>
-                
-                <div class="summary">
-                  <span class="label">💡 一句话总结</span>
-                  提出探索检查点覆盖率指标，量化评估LLM Agent在陌生环境中的自主探索能力。
-                </div>
-                
-                <div class="card-links">
-                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.16143v1" target="_blank">arXiv</a>
-                  
-                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.16143v1" target="_blank">PDF</a>
-                  
-                </div>
-              </div>
-              
-              <details>
-                <summary>📋 详细解读</summary>
-                <div class="detail-body"><span class="detail-label">论文解读</span>论文识别出LLM Agent在陌生环境中因过早利用先验知识而失败的普遍问题。核心贡献是提出探索检查点覆盖率（Exploration Checkpoint Coverage）作为量化评估Agent自主探索能力的指标。研究形式化了这一关键但尚未被充分探索的能力，并提供了评估方法。对构建适应性Agent系统具有理论指导意义，有助于指导Agent在动态环境中的行为决策。</div>
-              </details>
-              
-            </div>
-          
-        </td>
-
-        <!-- 右栏：小红书 -->
-        <td>
-          
-            
-            <div class="card">
-              <div class="card-inner">
-                <div class="card-top">
-                  <div class="card-tags">
-                    
-                    <span class="tag">skill retrieval</span>
-                    
-                  </div>
-                  
-                  <span class="card-date" style="color:#FF2442;">❤️ 46</span>
-                  
-                </div>
-                <div class="card-title">
-                  <a href="https://www.xiaohongshu.com/explore/6a09737e000000000701197e?xsec_token=ABIOzuEchmKjyjwyUk1ax7UnLedLyhY4ZbpxP-5Ag9Llw=&amp;xsec_source=pc_search" target="_blank">Agent Memory 怎么做？我的实战选型</a>
-                </div>
-                
-                <div class="card-links">
-                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a09737e000000000701197e?xsec_token=ABIOzuEchmKjyjwyUk1ax7UnLedLyhY4ZbpxP-5Ag9Llw=&amp;xsec_source=pc_search" target="_blank">小红书</a>
-                </div>
-              </div>
-            </div>
-          
-        </td>
-      </tr>
-      
-      <tr class="card-row">
-        <!-- 左栏：arXiv -->
-        <td>
-          
-            
-            <div class="card">
-              <div class="card-inner">
-                <div class="card-top">
-                  <div class="card-tags">
-                    
-                    <span class="tag">LLM Agent</span>
-                    
-                    
-                  </div>
-                  <span class="card-date">2026-05-15</span>
-                </div>
-                <div class="card-title">
-                  <a href="http://arxiv.org/abs/2605.16194v1" target="_blank">paper.json: A Coordination Convention for LLM-Agent-Actionable Papers</a>
-                </div>
-                <div class="card-byline">Arquimedes Canedo</div>
-                
-                <div class="summary">
-                  <span class="label">💡 一句话总结</span>
-                  提出paper.json格式规范，使学术论文能够被LLM Agent细粒度理解和操作。
-                </div>
-                
-                <div class="card-links">
-                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.16194v1" target="_blank">arXiv</a>
-                  
-                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.16194v1" target="_blank">PDF</a>
-                  
-                </div>
-              </div>
-              
-              <details>
-                <summary>📋 详细解读</summary>
-                <div class="detail-body"><span class="detail-label">论文解读</span>论文针对LLM Agent作为论文读者时的常见失败模式，提出paper.json协调规范。当前标准论文格式导致子声明无法细粒度引用、范围过度扩展、图表命令被埋没等问题。核心创新是提出结构化格式使论文成为Agent可操作对象，支持子声明级别引用和精确范围界定。该研究对提升Agent学术理解能力具有实用价值。</div>
-              </details>
-              
-            </div>
-          
-        </td>
-
-        <!-- 右栏：小红书 -->
-        <td>
-          
-            
-            <div class="card">
-              <div class="card-inner">
-                <div class="card-top">
-                  <div class="card-tags">
-                    
-                    <span class="tag">LLM Agent</span>
-                    
-                  </div>
-                  
-                  <span class="card-date" style="color:#FF2442;">❤️ 23</span>
-                  
-                </div>
-                <div class="card-title">
-                  <a href="https://www.xiaohongshu.com/explore/6a0706fa000000003501dc77?xsec_token=AB-eWyIRNDOx4GkHVo2Zmp-1sqtKA-Xi48PtSj3QGW0OQ=&amp;xsec_source=pc_search" target="_blank">Note 05: 干货! Agent Benchmark 设计范式</a>
-                </div>
-                
-                <div class="card-links">
-                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a0706fa000000003501dc77?xsec_token=AB-eWyIRNDOx4GkHVo2Zmp-1sqtKA-Xi48PtSj3QGW0OQ=&amp;xsec_source=pc_search" target="_blank">小红书</a>
-                </div>
-              </div>
-            </div>
-          
-        </td>
-      </tr>
-      
-      <tr class="card-row">
-        <!-- 左栏：arXiv -->
-        <td>
-          
-            
-            <div class="card">
-              <div class="card-inner">
-                <div class="card-top">
-                  <div class="card-tags">
-                    
-                    <span class="tag">LLM Agent</span>
-                    
-                    
-                  </div>
-                  <span class="card-date">2026-05-15</span>
-                </div>
-                <div class="card-title">
-                  <a href="http://arxiv.org/abs/2605.16205v1" target="_blank">Context, Reasoning, and Hierarchy: A Cost-Performance Study of Compound LLM Agent Design in an Adversarial POMDP</a>
-                </div>
-                <div class="card-byline">Igor Bogdanov, Chung-Horng Lung, Thomas Kunz, Jie Gao, Adrian Taylor</div>
-                
-                <div class="summary">
-                  <span class="label">💡 一句话总结</span>
-                  对抗性POMDP环境下复合LLM Agent设计的成本-性能权衡实证研究。
-                </div>
-                
-                <div class="card-links">
-                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.16205v1" target="_blank">arXiv</a>
-                  
-                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.16205v1" target="_blank">PDF</a>
-                  
-                </div>
-              </div>
-              
-              <details>
-                <summary>📋 详细解读</summary>
-                <div class="detail-body"><span class="detail-label">论文解读</span>论文针对复合LLM Agent在对抗性部分可观测环境中的设计维度进行系统性研究。核心问题是Agent视野、推理方式和任务分解三个维度的设计选择如何影响性能与推理成本的权衡。进行了对照实验研究，考察不同设计选择的效果差异。研究为实践者提供了复合Agent设计决策的实证依据，有助于在性能和成本之间找到最优平衡点。</div>
-              </details>
-              
-            </div>
-          
-        </td>
-
-        <!-- 右栏：小红书 -->
-        <td>
-          
-            
-            <div class="card">
-              <div class="card-inner">
-                <div class="card-top">
-                  <div class="card-tags">
-                    
-                    <span class="tag">LLM Agent</span>
-                    
-                  </div>
-                  
-                  <span class="card-date" style="color:#FF2442;">❤️ 21</span>
-                  
-                </div>
-                <div class="card-title">
-                  <a href="https://www.xiaohongshu.com/explore/6a0846c50000000035021d76?xsec_token=ABiVa9B1nbNM3uyCnDZwvntkPPbk3Iee7ManQLijhKJI4=&amp;xsec_source=pc_search" target="_blank">EAGLET · 全局规划器让Agent少走弯路</a>
-                </div>
-                
-                <div class="card-links">
-                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a0846c50000000035021d76?xsec_token=ABiVa9B1nbNM3uyCnDZwvntkPPbk3Iee7ManQLijhKJI4=&amp;xsec_source=pc_search" target="_blank">小红书</a>
-                </div>
-              </div>
-            </div>
-          
-        </td>
-      </tr>
-      
-      <tr class="card-row">
-        <!-- 左栏：arXiv -->
-        <td>
-          
-            <div class="rest-cell">—</div>
-          
-        </td>
-
-        <!-- 右栏：小红书 -->
-        <td>
-          
-            
-            <div class="card">
-              <div class="card-inner">
-                <div class="card-top">
-                  <div class="card-tags">
-                    
-                    <span class="tag">LLM Agent</span>
-                    
-                  </div>
-                  
-                  <span class="card-date" style="color:#FF2442;">❤️ 17</span>
-                  
-                </div>
-                <div class="card-title">
-                  <a href="https://www.xiaohongshu.com/explore/6a09a2850000000038037183?xsec_token=ABIOzuEchmKjyjwyUk1ax7Uq3m65g7MRyRREpBTt7OV2U=&amp;xsec_source=pc_search" target="_blank">LLM 多智能体翻车那一步，能不能实时喊停？</a>
-                </div>
-                
-                <div class="card-links">
-                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a09a2850000000038037183?xsec_token=ABIOzuEchmKjyjwyUk1ax7Uq3m65g7MRyRREpBTt7OV2U=&amp;xsec_source=pc_search" target="_blank">小红书</a>
                 </div>
               </div>
             </div>
