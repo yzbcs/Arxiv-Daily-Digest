@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日推送 · 2026年05月19日</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #eef0f5; font-family: -apple-system, 'PingFang SC', 'Segoe UI', sans-serif; padding: 30px 16px; }
+
+.email-wrap { max-width: 960px; margin: 0 auto; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 32px rgba(0,0,0,0.10); }
+
+/* ── Header ── */
+.header { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); padding: 28px 28px 20px; color: #fff; }
+.header .eyebrow { font-size: 11px; letter-spacing: 3px; color: #7ecfff; text-transform: uppercase; margin-bottom: 8px; }
+.header h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
+.header .meta { font-size: 12px; color: #a0b8cc; margin-bottom: 14px; }
+.pills { display: flex; gap: 10px; flex-wrap: wrap; }
+.pill { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); border-radius: 20px; padding: 4px 13px; font-size: 11px; color: #d0e8ff; }
+.pill b { color: #7ecfff; }
+
+/* ── 两栏布局 ── */
+.content-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.col-header-row th { width: 50%; text-align: left; padding: 14px 14px 10px; background: #fff; border-bottom: 1px solid #e8eaef; }
+.col-header-arxiv { color: #3b5bdb; font-size: 13px; font-weight: 700; border-bottom: 2px solid #3b5bdb; display: inline-block; padding-bottom: 2px; }
+.col-header-xhs { color: #FF2442; font-size: 13px; font-weight: 700; border-bottom: 2px solid #FF2442; display: inline-block; padding-bottom: 2px; }
+
+/* 卡片行 */
+.card-row td { width: 50%; vertical-align: top; padding: 12px 14px; border-top: 1px solid #e8eaef; }
+.card-row td:first-child { border-right: 1px solid #e8eaef; }
+.rest-cell { padding: 40px 14px; text-align: center; color: #bbb; font-size: 13px; font-style: italic; }
+
+/* ── Cards ── */
+.card { border: 1px solid #e8eaef; border-radius: 8px; overflow: hidden; height: 100%; display: flex; flex-direction: column; }
+.card-inner { padding: 12px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.card-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+.tag { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; background: #f3f4f6; color: #555; }
+.card-date { font-size: 10px; color: #aaa; white-space: nowrap; }
+.card-title { font-size: 13px; font-weight: 700; color: #1a1a2e; line-height: 1.45; }
+.card-title a { color: inherit; text-decoration: none; }
+.card-title a:hover { text-decoration: underline; }
+.card-byline { font-size: 11px; color: #999; }
+
+.summary { background: #f4f6ff; border-left: 2px solid #3b5bdb; border-radius: 0 4px 4px 0; padding: 6px 10px; font-size: 11px; color: #333; line-height: 1.6; margin-top: auto; }
+.summary-xhs { background: #fff5f6; border-left: 2px solid #FF2442; border-radius: 0 4px 4px 0; padding: 6px 10px; font-size: 11px; color: #333; line-height: 1.6; margin-top: auto; }
+.summary .label { font-size: 9px; font-weight: 700; letter-spacing: 1px; color: #3b5bdb; display: block; margin-bottom: 2px; }
+.summary-xhs .label { font-size: 9px; font-weight: 700; letter-spacing: 1px; color: #FF2442; display: block; margin-bottom: 2px; }
+
+.card-links { display: flex; gap: 4px; flex-wrap: wrap; margin-top: auto; }
+.btn { font-size: 10px; font-weight: 600; padding: 3px 9px; border-radius: 5px; text-decoration: none; }
+.btn-arxiv { background: #b31b1b; color: #fff; }
+.btn-pdf { background: #1a73e8; color: #fff; }
+.btn-xhs { background: #FF2442; color: #fff; }
+
+/* ── details/summary 展开收起 ── */
+details { border-top: 1px solid #eef0f8; background: #fafbff; }
+details summary { display: flex; align-items: center; gap: 6px; padding: 8px 12px; cursor: pointer; font-size: 11px; font-weight: 600; color: #3b5bdb; list-style: none; user-select: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: "▶"; font-size: 9px; }
+details[open] summary::before { content: "▼"; }
+details summary:hover { background: #eef2ff; }
+.detail-body { padding: 8px 12px 12px; font-size: 11px; color: #444; line-height: 1.7; white-space: pre-wrap; border-top: 1px solid #eef0f8; }
+.detail-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #3b5bdb; display: block; margin-bottom: 4px; }
+
+/* ── Footer ── */
+.footer { background: #f8f9ff; border-top: 1px solid #eaecf0; padding: 16px 24px; text-align: center; font-size: 11px; color: #aaa; }
+.footer a { color: #3b5bdb; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="email-wrap">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="eyebrow">📬 Daily Digest</div>
+    <h1>今日推送</h1>
+    <div class="meta">2026年05月19日 · 星期二</div>
+    <div class="pills">
+      
+      <div class="pill">📄 arXiv <b>8</b> 篇</div>
+      
+      
+      <div class="pill">📕 小红书 <b>10</b> 条</div>
+      
+      <div class="pill">关键词：LLM Agent · skill learning · skill retrieval · skill refinement · skill evolution · openclaw</div>
+    </div>
+  </div>
+
+  <!-- 两栏并排 -->
+  <table class="content-table">
+    <!-- 表头 -->
+    <tr class="col-header-row">
+      <th>
+        &nbsp;&nbsp;<span class="col-header-arxiv">📄 arXiv 论文</span>
+        
+      </th>
+      <th>
+        &nbsp;&nbsp;<span class="col-header-xhs">📕 小红书笔记</span>
+      </th>
+    </tr>
+
+    
+      
+    
+
+    
+    
+
+    
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">LLM Agent</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-05-15</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2605.16508v1" target="_blank">The Scaling Laws of Skills in LLM Agent Systems</a>
+                </div>
+                <div class="card-byline">Charles Chen, Qiming Yu, Yuhang Gu, Zhuoye Huang, Hanjing Li</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  论文通过大规模实验揭示LLM代理系统中技能路由和执行的扩展定律，为技能库设计提供理论指导。
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.16508v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.16508v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>论文聚焦代理系统中技能累积的扩展规律研究，通过覆盖15个前沿LLM、1141个真实技能和300万次路由决策的大规模实验，发现两个耦合定律：路由准确率随技能库规模对数衰减，执行质量呈幂律提升。核心创新在于首次系统量化技能系统的扩展行为。研究为大规模技能库设计、路由优化和资源分配提供了理论基础和实证依据。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">skill learning</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 206</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/6a0b137c000000003701dcc5?xsec_token=ABk_ux50VZF6kheUQOwwSUc1YFse3RxB_Wu1AFxGB4xgo=&amp;xsec_source=pc_search" target="_blank">写论文的一整套流水线Skill，它开源了！</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a0b137c000000003701dcc5?xsec_token=ABk_ux50VZF6kheUQOwwSUc1YFse3RxB_Wu1AFxGB4xgo=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">LLM Agent</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-05-16</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2605.16986v1" target="_blank">Skills on the Fly: Test-Time Adaptive Skill Synthesis for LLM Agents</a>
+                </div>
+                <div class="card-byline">Jingxing Wang, Chenyu Zhou, Zhihui Fu, Jun Wang, Weiwen Liu</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  SkillTTA提出测试时自适应技能合成方法，通过动态检索和组合训练轨迹生成任务特定技能。
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.16986v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.16986v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>论文提出SkillTTA方法，解决静态技能库无法满足测试时任务特定需求的问题。核心创新在于从训练轨迹中检索相关样本，并将其合成为临时、任务特定的文本技能，同时保持求解模型固定。该方法兼顾了适应性与效率。实验结果显示，在开放世界任务中，SkillTTA显著优于静态技能基线，验证了测试时技能合成的重要价值。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">skill learning</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 189</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/6a0b14ef0000000035030103?xsec_token=ABk_ux50VZF6kheUQOwwSUc3k1wIOZfRAfGX6VXVA8RAw=&amp;xsec_source=pc_search" target="_blank">最近一周读过不错的大模型RL/rubric论文</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a0b14ef0000000035030103?xsec_token=ABk_ux50VZF6kheUQOwwSUc3k1wIOZfRAfGX6VXVA8RAw=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">LLM Agent</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-05-18</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2605.18401v1" target="_blank">SkillsVote: Lifecycle Governance of Agent Skills from Collection, Recommendation to Evolution</a>
+                </div>
+                <div class="card-byline">Hongyi Liu, Haoyan Yang, Tao Jiang, Bo Tang, Feiyu Xiong</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  SkillsVote提出代理技能全生命周期治理框架，涵盖从收集、推荐到演进的完整流程。
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.18401v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.18401v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>论文提出SkillsVote框架，将代理技能视为耦合可执行脚本与非可执行指导的经验模式。研究聚焦开放技能生态中的冗余、异质性问题，设计了从收集、推荐到演进的完整治理流程。核心创新在于将技能脚本与程序化指导分离，实现精准治理。实验表明该方法有效提升了技能系统的可控性和可演进性，为大规模技能管理提供了新范式。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">skill retrieval</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 138</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/6a0ac9f60000000038036326?xsec_token=ABDTvNS7HK5l5Ayhw1lcsWcQUJ_98ff0YblNn7C80eNDg=&amp;xsec_source=pc_search" target="_blank">近期对多轮Agentic RL的思考</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a0ac9f60000000038036326?xsec_token=ABDTvNS7HK5l5Ayhw1lcsWcQUJ_98ff0YblNn7C80eNDg=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">LLM Agent</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-05-18</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2605.17734v1" target="_blank">Harnessing LLM Agents with Skill Programs</a>
+                </div>
+                <div class="card-byline">Hongjun Liu, Yifei Ming, Shafiq Joty, Chen Zhao</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  HASP方法将可重用技能转化为Skill Programs，通过显式触发机制增强LLM代理在复杂任务中的能力。
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.17734v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.17734v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>论文提出HASP框架，将过往经验编码为可执行的Skill Programs，而非仅作为建议性文本。核心创新在于显式机制设计，明确何时及如何在代理循环中干预。方法将技能脚本与执行逻辑耦合，实现技能的高效复用。实验验证了HASP在长期复杂任务中的显著优势，为构建可组合、可适配的代理技能系统提供了新思路。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">skill retrieval</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 113</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/6a0af011000000003502e0d5?xsec_token=ABKYmwC-wu6opF06hpQcfbw4fAnr3wkJ5iwHN7mvaSoyk=&amp;xsec_source=pc_search" target="_blank">Agentic rl项目推荐</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a0af011000000003502e0d5?xsec_token=ABKYmwC-wu6opF06hpQcfbw4fAnr3wkJ5iwHN7mvaSoyk=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">LLM Agent</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-05-18</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2605.18693v1" target="_blank">SkillGenBench: Benchmarking Skill Generation Pipelines for LLM Agents</a>
+                </div>
+                <div class="card-byline">Yifan Zhou, Zhentao Zhang, Ziming Cheng, Shuo Zhang, Qizhen Lan</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  SkillGenBench提出LLM代理技能生成管线的基准测试，评估从仓库和文档生成可执行技能的能力。
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.18693v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.18693v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>论文针对LLM代理技能生成这一新兴任务提出基准测试框架，解决现有基准仅评估技能使用或下游任务解决的局限性。研究定义了技能生成的正确性、可重用性和可执行性三个维度。核心贡献在于提供系统化评估体系，覆盖从原始文档到可用技能的完整管道。实验揭示当前生成管道在复杂技能提取上的主要瓶颈，为后续优化指明方向。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">skill retrieval</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 98</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/6a0ae1010000000007028c40?xsec_token=ABDTvNS7HK5l5Ayhw1lcsWcSHFDsmcL7tqDHY-2NMd-Ek=&amp;xsec_source=pc_search" target="_blank">1️⃣1paper｜DIG：判别即生成</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a0ae1010000000007028c40?xsec_token=ABDTvNS7HK5l5Ayhw1lcsWcSHFDsmcL7tqDHY-2NMd-Ek=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">openclaw</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-05-16</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2605.17172v1" target="_blank">OpenJarvis: Personal AI, On Personal Devices</a>
+                </div>
+                <div class="card-byline">Jon Saad-Falcon, Avanika Narayan, Robby Manihani, Tanvir Bhathal, Herumb Shandilya</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  OpenJarvis针对OpenClaw等个人AI栈的云端依赖问题，探索本地模型替代方案的性能损失与解决路径。
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.17172v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.17172v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>论文关注个人AI栈（如OpenClaw和Hermes Agent）的本地化部署挑战。研究发现直接用小型本地模型替换云端前沿模型会导致25-39个百分点精度损失。核心分析在于识别个人AI任务的特殊性，设计适配本地模型的优化策略。通过系统评估PinpointBench和GAIA等基准，论文为构建高效个人AI助手提供了本地部署的可行方案和性能平衡建议。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">skill learning</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 77</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/6a0b321800000000060328de?xsec_token=ABk_ux50VZF6kheUQOwwSUc40P8g6a0-WZpf4pGk6w5DQ=&amp;xsec_source=pc_search" target="_blank">我个人比较推荐的大模型算法方向</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a0b321800000000060328de?xsec_token=ABk_ux50VZF6kheUQOwwSUc40P8g6a0-WZpf4pGk6w5DQ=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    
+                    <span class="tag">arxiv</span>
+                    
+                  </div>
+                  <span class="card-date">2026-05-17</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2605.17450v1" target="_blank">ContraFix: Agentic Vulnerability Repair via Differential Runtime Evidence and Skill Reuse</a>
+                </div>
+                <div class="card-byline">Simiao Liu, Fang Liu, Li Zhang, Yang Liu, Yinghao Zhu</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  ContraFix通过差异化运行时证据和技能复用提升LLM代理的自动化漏洞修复能力。
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.17450v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.17450v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>论文聚焦LLM代理在自动化漏洞修复中的语义误解问题，提出ContraFix框架。核心创新在于利用差异化运行时证据进行修复方向校正，并引入技能复用机制提升修复效率。该方法通过分析修复轨迹和错误模式，针对性解决代理选择错误修复方向的根本缺陷。实验结果显示，ContraFix在真实漏洞数据集上显著优于基线方法，为自动化代码修复提供了更鲁棒的解决方案。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">skill learning</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 70</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/6a0b426b000000003503b471?xsec_token=ABk_ux50VZF6kheUQOwwSUc8culyE3HTVN0bsdZobuqck=&amp;xsec_source=pc_search" target="_blank">SWE-Code训练数据的思路</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a0b426b000000003503b471?xsec_token=ABk_ux50VZF6kheUQOwwSUc8culyE3HTVN0bsdZobuqck=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">LLM Agent</span>
+                    
+                    
+                  </div>
+                  <span class="card-date">2026-05-17</span>
+                </div>
+                <div class="card-title">
+                  <a href="http://arxiv.org/abs/2605.17641v1" target="_blank">Causal Intervention-Based Memory Selection for Long-Horizon LLM Agents</a>
+                </div>
+                <div class="card-byline">Saksham Sahai Srivastava</div>
+                
+                <div class="summary">
+                  <span class="label">💡 一句话总结</span>
+                  因果记忆干预方法通过因果推断而非语义相似性进行记忆选择，提升长期代理的任务完成率。
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-arxiv" href="http://arxiv.org/abs/2605.17641v1" target="_blank">arXiv</a>
+                  
+                  <a class="btn btn-pdf" href="https://arxiv.org/pdf/2605.17641v1" target="_blank">PDF</a>
+                  
+                </div>
+              </div>
+              
+              <details>
+                <summary>📋 详细解读</summary>
+                <div class="detail-body"><span class="detail-label">论文解读</span>论文针对长期代理中记忆检索的脆弱性问题，提出因果记忆干预框架。核心创新在于利用因果推断识别真正相关的记忆，而非依赖表面语义相似性。该方法解决了记忆可能主题相关但实际无关、过时或误导的问题。实验表明，通过因果过滤的记忆选择显著提升了代理在长时程任务中的完成率，为记忆增强代理提供了更可靠的信息获取机制。</div>
+              </details>
+              
+            </div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">skill learning</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 64</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/6a0bdc0a000000003701fbc6?xsec_token=ABk_ux50VZF6kheUQOwwSUcxJVim-D3o-j95GGSrpGH68=&amp;xsec_source=pc_search" target="_blank">自蒸馏Agentic RL</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a0bdc0a000000003701fbc6?xsec_token=ABk_ux50VZF6kheUQOwwSUcxJVim-D3o-j95GGSrpGH68=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            <div class="rest-cell">—</div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">skill learning</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 56</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/6a0b163c000000003601b840?xsec_token=ABk_ux50VZF6kheUQOwwSUc_rjL4EFFS5Nv5xS_2L2kg0=&amp;xsec_source=pc_search" target="_blank">✍️ Long-CoT蒸馏：让多个教师一起教</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a0b163c000000003601b840?xsec_token=ABk_ux50VZF6kheUQOwwSUc_rjL4EFFS5Nv5xS_2L2kg0=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+      <tr class="card-row">
+        <!-- 左栏：arXiv -->
+        <td>
+          
+            <div class="rest-cell">—</div>
+          
+        </td>
+
+        <!-- 右栏：小红书 -->
+        <td>
+          
+            
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-tags">
+                    
+                    <span class="tag">LLM Agent</span>
+                    
+                  </div>
+                  
+                  <span class="card-date" style="color:#FF2442;">❤️ 44</span>
+                  
+                </div>
+                <div class="card-title">
+                  <a href="https://www.xiaohongshu.com/explore/6a0aeeda0000000007029a2c?xsec_token=ABDTvNS7HK5l5Ayhw1lcsWcRdlzLVk-a5EphME7S8qyu4=&amp;xsec_source=pc_search" target="_blank">🚀 同济大学计算机学院｜大模型科研实习</a>
+                </div>
+                
+                <div class="card-links">
+                  <a class="btn btn-xhs" href="https://www.xiaohongshu.com/explore/6a0aeeda0000000007029a2c?xsec_token=ABDTvNS7HK5l5Ayhw1lcsWcRdlzLVk-a5EphME7S8qyu4=&amp;xsec_source=pc_search" target="_blank">小红书</a>
+                </div>
+              </div>
+            </div>
+          
+        </td>
+      </tr>
+      
+    
+  </table>
+
+  <!-- Footer -->
+  <div class="footer">
+    由 <strong>arxiv-daily</strong> 自动生成 · 每天 12:00 推送<br>
+    
+    <a href="https://yzbcs.github.io/Daily-Digest-Assistant/archive.html" target="_blank">📚 查看历史归档</a> ·
+    
+    <a href="https://github.com/yzbcs/Daily-Digest-Assistant">GitHub</a>
+  </div>
+
+</div>
+</body>
+</html>
